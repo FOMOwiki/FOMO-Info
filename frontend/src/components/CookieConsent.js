@@ -7,21 +7,16 @@ const CookieConsent = () => {
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [settings, setSettings] = useState(null);
-  const [language, setLanguage] = useState('en');
+  const [legalModal, setLegalModal] = useState({ isOpen: false, title: '', content: '' });
 
   const API = process.env.REACT_APP_BACKEND_URL || '';
 
   useEffect(() => {
-    // Detect language from localStorage or browser
-    const savedLang = localStorage.getItem('language') || 
-                      (navigator.language.startsWith('ru') ? 'ru' : 'en');
-    setLanguage(savedLang);
-
     // Check if user has already consented
     const consent = localStorage.getItem('fomo_consent');
     if (!consent) {
       // Load settings from API
-      fetch(`${API}/cookie-consent-settings`)
+      fetch(`${API}/api/cookie-consent-settings`)
         .then(res => res.json())
         .then(data => {
           setSettings(data);
@@ -49,10 +44,28 @@ const CookieConsent = () => {
     }
   };
 
+  const openLegalModal = (type) => {
+    let title = '';
+    let content = '';
+    
+    if (type === 'cookies') {
+      title = 'Cookie Policy';
+      content = settings?.cookie_policy_content || getDefaultCookiePolicy();
+    } else if (type === 'privacy') {
+      title = 'Privacy Policy';
+      content = settings?.privacy_policy_content || getDefaultPrivacyPolicy();
+    } else if (type === 'terms') {
+      title = 'Terms of Use';
+      content = settings?.terms_content || getDefaultTerms();
+    }
+    
+    setLegalModal({ isOpen: true, title, content });
+  };
+
   const allAccepted = acceptedCookies && acceptedPrivacy;
 
-  const title = settings ? (language === 'ru' ? settings.title_ru : settings.title_en) : 'Cookie & Privacy Settings';
-  const description = settings ? (language === 'ru' ? settings.description_ru : settings.description_en) : 'We value your privacy. Please accept our cookies and privacy policy to continue.';
+  const title = settings?.title_en || 'Cookie & Privacy Settings';
+  const description = settings?.description_en || 'We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.';
 
   return (
     <>
@@ -135,13 +148,16 @@ const CookieConsent = () => {
                               </div>
                               <div className="flex-1 min-w-0">
                                 <span className="text-gray-900 text-sm font-semibold">
-                                  {language === 'ru' ? 'Основные Cookies' : 'Essential Cookies'}
+                                  Essential Cookies
                                 </span>
                                 <p className="text-gray-500 text-xs mt-0.5 leading-snug">
-                                  {language === 'ru' 
-                                    ? 'Необходимы для работы платформы, аутентификации и безопасности.'
-                                    : 'Required for platform functionality, authentication, and security.'
-                                  }
+                                  Required for platform functionality, authentication, and security.{' '}
+                                  <button
+                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLegalModal('cookies'); }}
+                                    className="text-emerald-600 hover:text-emerald-700 font-medium underline underline-offset-2 transition-colors"
+                                  >
+                                    Cookie Policy
+                                  </button>
                                 </p>
                               </div>
                             </label>
@@ -163,19 +179,23 @@ const CookieConsent = () => {
                               </div>
                               <div className="flex-1 min-w-0">
                                 <span className="text-gray-900 text-sm font-semibold">
-                                  {language === 'ru' ? 'Политика Конфиденциальности' : 'Privacy Policy'}
+                                  Privacy Policy & Terms
                                 </span>
                                 <p className="text-gray-500 text-xs mt-0.5 leading-snug">
-                                  {language === 'ru' ? 'Я согласен с ' : 'I agree to the '}
-                                  <a
-                                    href={settings?.privacy_policy_url || '/privacy'}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                  I agree to the{' '}
+                                  <button
+                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLegalModal('privacy'); }}
                                     className="text-emerald-600 hover:text-emerald-700 font-medium underline underline-offset-2 transition-colors"
-                                    onClick={(e) => e.stopPropagation()}
                                   >
-                                    {language === 'ru' ? 'Условиями и Политикой' : 'Terms & Privacy Policy'}
-                                  </a>
+                                    Privacy Policy
+                                  </button>
+                                  {' '}and{' '}
+                                  <button
+                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLegalModal('terms'); }}
+                                    className="text-emerald-600 hover:text-emerald-700 font-medium underline underline-offset-2 transition-colors"
+                                  >
+                                    Terms of Use
+                                  </button>
                                 </p>
                               </div>
                             </label>
@@ -196,31 +216,26 @@ const CookieConsent = () => {
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
-                                    {language === 'ru' ? 'Что мы собираем:' : 'What we collect:'}
+                                    What we collect:
                                   </h4>
                                   <ul className="text-gray-700 text-xs space-y-1.5 list-disc list-inside ml-1">
-                                    <li>{language === 'ru' ? 'Основные cookies для аутентификации и безопасности' : 'Essential cookies for authentication & security'}</li>
-                                    <li>{language === 'ru' ? 'Аналитика для улучшения производительности' : 'Analytics to improve platform performance'}</li>
-                                    <li>{language === 'ru' ? 'Пользовательские настройки' : 'User preferences and settings'}</li>
-                                    <li>{language === 'ru' ? 'Данные подключения кошелька (зашифрованы)' : 'Wallet connection data (encrypted)'}</li>
+                                    <li>Essential cookies for authentication & security</li>
+                                    <li>Analytics to improve platform performance</li>
+                                    <li>User preferences and settings</li>
+                                    <li>Wallet connection data (encrypted)</li>
                                   </ul>
                                   <div className="mt-2 flex items-start gap-1.5 text-gray-600 text-xs bg-white/50 rounded-lg p-2 border border-gray-200">
                                     <svg className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                       <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                     </svg>
                                     <p className="flex-1">
-                                      {language === 'ru' 
-                                        ? 'Ваши данные зашифрованы и никогда не продаются третьим лицам. '
-                                        : 'Your data is encrypted and never sold to third parties. '
-                                      }
-                                      <a 
-                                        href={settings?.privacy_policy_url || '/privacy'} 
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                      Your data is encrypted and never sold to third parties.{' '}
+                                      <button 
+                                        onClick={(e) => { e.preventDefault(); openLegalModal('privacy'); }}
                                         className="text-emerald-600 hover:text-emerald-700 font-medium underline underline-offset-2"
                                       >
-                                        {language === 'ru' ? 'Полная Политика' : 'Full Privacy Policy'}
-                                      </a>
+                                        Full Privacy Policy
+                                      </button>
                                     </p>
                                   </div>
                                 </div>
@@ -249,10 +264,10 @@ const CookieConsent = () => {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                             </svg>
-                            {language === 'ru' ? 'Принять' : 'Accept'}
+                            Accept All
                           </span>
                         ) : (
-                          language === 'ru' ? 'Выберите все' : 'Accept All'
+                          'Select All'
                         )}
                       </button>
                       
@@ -260,10 +275,7 @@ const CookieConsent = () => {
                         onClick={() => setShowDetails(!showDetails)}
                         className="px-5 py-2 text-gray-500 hover:text-emerald-600 text-xs font-medium transition-colors hover:bg-gray-50 rounded-lg"
                       >
-                        {showDetails 
-                          ? (language === 'ru' ? 'Скрыть детали' : 'Hide Details')
-                          : (language === 'ru' ? 'Показать детали' : 'View Details')
-                        }
+                        {showDetails ? 'Hide Details' : 'View Details'}
                       </button>
                     </div>
                   </div>
@@ -292,12 +304,7 @@ const CookieConsent = () => {
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                     </svg>
-                    <span>
-                      {language === 'ru' 
-                        ? 'Защищено FOMO Platform • Соответствие GDPR'
-                        : 'Secured by FOMO Platform • GDPR Compliant'
-                      }
-                    </span>
+                    <span>Secured by FOMO Platform • GDPR Compliant</span>
                   </div>
                 </div>
               </div>
@@ -305,8 +312,195 @@ const CookieConsent = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Legal Modal */}
+      <AnimatePresence>
+        {legalModal.isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[10000] flex items-center justify-center p-4"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
+            onClick={() => setLegalModal({ isOpen: false, title: '', content: '' })}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-hidden shadow-2xl"
+            >
+              {/* Modal Header */}
+              <div className="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-emerald-50 to-teal-50 flex justify-between items-center">
+                <h2 className="text-xl font-bold text-emerald-700">{legalModal.title}</h2>
+                <button
+                  onClick={() => setLegalModal({ isOpen: false, title: '', content: '' })}
+                  className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              {/* Modal Content */}
+              <div className="p-6 overflow-y-auto max-h-[calc(80vh-80px)]">
+                <div 
+                  className="prose prose-sm max-w-none text-gray-700"
+                  style={{ whiteSpace: 'pre-wrap' }}
+                >
+                  {legalModal.content || 'No content available. Please configure this policy in the admin panel.'}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
+
+// Default policy content
+const getDefaultCookiePolicy = () => `COOKIE POLICY
+
+Effective Date: December 2025
+
+1. WHAT ARE COOKIES?
+
+Cookies are small text files placed on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and enabling certain features.
+
+2. TYPES OF COOKIES WE USE
+
+Essential Cookies
+These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility. You cannot opt out of these cookies.
+
+• Authentication cookies (keeping you logged in)
+• Security cookies (protecting against fraud)
+• Session cookies (maintaining your browsing session)
+
+Analytics Cookies
+These cookies collect data about your interactions with the site (e.g., number of visitors, behavior on specific pages). We use this information to improve the interface, identify and fix bugs, and determine the popularity of different FOMO sections.
+
+Advertising Cookies
+These are used to display advertisements that are more relevant to you and to measure their effectiveness. They may track whether you have viewed a particular ad and how you interacted with it.
+
+3. MANAGING COOKIES
+
+Browser Settings
+Most browsers are set to automatically accept cookies. However, you can adjust your browser settings to block or delete cookies. Keep in mind that some features of FOMO may not function properly if you disable cookies entirely.
+
+Third-Party Services
+We may integrate third-party tools (such as Google Analytics), which also use their own cookies to analyze traffic.
+
+4. DO NOT TRACK (DNT) SIGNALS
+
+FOMO currently does not support the DNT protocol. If you wish to minimize tracking, you may disable cookies in your browser settings or use browser extensions that block tracking scripts.
+
+5. CONTACT US
+
+If you have questions about our cookie practices, please contact us at the information provided on our website.`;
+
+const getDefaultPrivacyPolicy = () => `PRIVACY POLICY
+
+Effective Date: December 2025
+
+1. INTRODUCTION
+
+Welcome to FOMO. We respect and value your privacy and are committed to protecting any personal information you provide to us.
+
+2. WHAT INFORMATION WE COLLECT
+
+Personal Information You Provide Directly
+• Basic account information (name, email, password)
+• Profile information and preferences
+• Communication records with our support team
+
+Automatically Collected Data
+• Device information and system logs
+• Usage information and browsing patterns
+• Approximate geolocation data
+
+3. HOW WE USE YOUR INFORMATION
+
+• To provide and maintain our services
+• To improve user experience
+• To communicate with you about updates
+• To ensure security and prevent fraud
+
+4. DATA STORAGE AND SECURITY
+
+We take all necessary measures to ensure that your personal data remains secure. We use encryption, access controls, and regular security audits.
+
+5. YOUR RIGHTS
+
+• Access and correct your personal data
+• Request deletion of your data
+• Opt-out of marketing communications
+• Data portability
+
+6. COOKIES
+
+We use cookies and similar technologies. Please see our Cookie Policy for more details.
+
+7. CHANGES TO THIS POLICY
+
+We may update this Privacy Policy from time to time. We will notify you of significant changes.
+
+8. CONTACT US
+
+If you have questions about this Privacy Policy, please contact us through the information provided on our website.`;
+
+const getDefaultTerms = () => `TERMS OF USE
+
+Effective Date: December 2025
+
+1. INTRODUCTION
+
+Welcome to FOMO. These Terms of Use constitute a legal agreement between you and FOMO. Please read these Terms carefully.
+
+2. ACCEPTANCE OF TERMS
+
+By using FOMO and its services, you confirm that you have read these Terms and agree to comply with them.
+
+3. USE OF THE SITE
+
+• Browsing and searching for crypto projects
+• Adding your own projects (if eligible)
+• Rating or commenting on existing projects
+• Viewing fund and person profiles
+
+4. USER RESPONSIBILITIES
+
+• Provide accurate and up-to-date information
+• Respect intellectual property rights
+• Comply with legal standards
+• Avoid fraudulent activities
+
+5. DISCLAIMER
+
+The content published on FOMO is for informational purposes only and does not constitute investment advice. Cryptocurrencies are high-risk assets. FOMO shall not be liable for any losses arising from the use of information provided on the site.
+
+6. LIMITATION OF LIABILITY
+
+FOMO is not responsible for:
+• Losses from cryptocurrency investments
+• Technical errors or downtime
+• Content accuracy of third-party submissions
+• Links to external websites
+
+7. INTELLECTUAL PROPERTY
+
+All content on FOMO (excluding user-generated content) is owned by FOMO and protected by applicable laws.
+
+8. CHANGES TO TERMS
+
+FOMO reserves the right to modify these Terms at any time. Continued use constitutes acceptance of updated Terms.
+
+9. GOVERNING LAW
+
+These Terms are governed by the laws of the European Union.
+
+10. CONTACT US
+
+If you have questions about these Terms, please contact us through the information provided on our website.`;
 
 export default CookieConsent;
