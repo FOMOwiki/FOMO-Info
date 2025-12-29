@@ -58,6 +58,7 @@ yarn start
 ```bash
 cd scripts
 python init_database.py
+python init_cookie_consent.py  # Cookie Consent с политиками
 ```
 
 ## 🛠 Технологии
