@@ -1,268 +1,141 @@
-# FOMO Platform - Changelog / Журнал изменений
+# FOMO Platform - Повна документація / Complete Documentation
 
-> **Репозиторий:** https://github.com/Dima434444/FINAL01  
-> **Оригинальные политики:** https://www.fomo.cx/legal  
-> **Дата обновления:** 29 декабря 2025
-
----
-
-## 📋 Содержание
-
-- [Версия 1.1.0 - Cookie Consent & Mobile Fixes](#версия-110---cookie-consent--mobile-fixes)
-- [Обзор изменений](#обзор-изменений)
-- [Мобильные исправления (20 багов)](#мобильные-исправления-20-багов)
-- [Cookie Consent система](#cookie-consent-система)
-- [Инструкция по развёртыванию](#инструкция-по-развёртыванию)
-- [Скрипты инициализации](#скрипты-инициализации)
+> **Репозиторій:** https://github.com/Dima434444/FINAL01  
+> **Версія:** 1.2.0  
+> **Дата:** 29 грудня 2025
 
 ---
 
-## Версия 1.1.0 - Cookie Consent & Mobile Fixes
+## 📋 Зміст / Contents
 
-**Дата релиза:** 29 декабря 2025
+1. [Огляд проекту](#1-огляд-проекту)
+2. [Архітектура системи](#2-архітектура-системи)
+3. [Швидкий старт](#3-швидкий-старт)
+4. [Функціональність](#4-функціональність)
+5. [Інтеграції](#5-інтеграції)
+6. [База даних](#6-база-даних)
+7. [API Документація](#7-api-документація)
+8. [Адмін-панель](#8-адмін-панель)
+9. [Мобільна адаптивність](#9-мобільна-адаптивність)
+10. [Деплоймент](#10-деплоймент)
 
-### ✨ Новые функции
+---
 
-- **Cookie Consent Banner** - Баннер согласия с политиками (GDPR compliant)
-- **Модальные окна политик** - Cookie Policy, Privacy Policy, Terms of Use
-- **Админ-панель для Cookie Consent** - Управление текстами политик из админки
-- **Скрипт автоматической инициализации** - `init_cookie_consent.py`
+## 1. Огляд проекту
 
-### 🐛 Исправления
+### Що таке FOMO Platform?
 
-- **20 мобильных багов** из файла `MOBILE_BUGS.md`
-- **Русский язык убран** из Cookie Consent (теперь только английский)
-- **MongoDB ObjectId serialization** - исправлена ошибка в API
+FOMO - це криптовалютна аналітична платформа з такими можливостями:
+- 📊 Відстеження цін криптовалют (BTC, ETH, ZK)
+- 🏆 Система рівнів Evolution та бейджів
+- 👥 Команда та партнери
+- 🗺️ Roadmap проекту
+- 💼 Утиліти та екосистема
+- 🔐 Підключення гаманця через Dynamic.xyz
 
-### 📁 Новые/изменённые файлы
+### Технологічний стек
+
+| Компонент | Технологія |
+|-----------|------------|
+| Frontend | React 18, Tailwind CSS, Framer Motion |
+| Backend | FastAPI (Python 3.11) |
+| Database | MongoDB |
+| Wallet | Dynamic.xyz SDK |
+| Animations | Framer Motion |
+
+---
+
+## 2. Архітектура системи
 
 ```
-ДОБАВЛЕНО:
-├── CHANGELOG.md                    # Этот файл
-├── DEPLOYMENT_GUIDE.md             # Полная документация развёртывания
-├── QUICK_DEPLOY.md                 # Краткая инструкция
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FOMO PLATFORM ARCHITECTURE                    │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   ┌─────────────────┐     ┌──────────────────┐     ┌─────────────┐ │
+│   │    FRONTEND     │     │     BACKEND      │     │   DATABASE  │ │
+│   │   React App     │────▶│   FastAPI App    │────▶│   MongoDB   │ │
+│   │   Port: 3000    │     │   Port: 8001     │     │  Port: 27017│ │
+│   └─────────────────┘     └──────────────────┘     └─────────────┘ │
+│          │                        │                                 │
+│          │                        │                                 │
+│   ┌──────▼──────┐          ┌──────▼──────┐                         │
+│   │ Dynamic.xyz │          │ Crypto API  │                         │
+│   │   Wallet    │          │  (Prices)   │                         │
+│   └─────────────┘          └─────────────┘                         │
+│                                                                     │
+│   COMPONENTS:                                                       │
+│   ├── LoadingScreen.js    - Анімований екран завантаження         │
+│   ├── CookieConsent.js    - Банер згоди з cookies                  │
+│   ├── InviteModal.js      - Модалка реєстрації з гаманцем         │
+│   └── AdminDashboard.js   - Адміністративна панель                 │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Структура файлів
+
+```
+/app/
+├── backend/
+│   ├── server.py              # FastAPI сервер
+│   ├── requirements.txt       # Python залежності
+│   └── .env                   # Конфігурація
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.js             # Головний компонент
+│   │   ├── App.css            # Стилі
+│   │   ├── components/
+│   │   │   ├── LoadingScreen.js        # Екран завантаження
+│   │   │   ├── CookieConsent.js        # Cookie банер
+│   │   │   ├── InviteModal.js          # Модалка гаманця
+│   │   │   └── admin/
+│   │   │       ├── AdminDashboard.js   # Адмін панель
+│   │   │       └── sections/           # Секції адмінки
+│   │   └── styles/
+│   │       ├── mobile.css              # Базові мобільні стилі
+│   │       └── mobile-bug-fixes.css    # Фікси мобільних багів
+│   ├── package.json
+│   └── .env
+│
 ├── scripts/
-│   └── init_cookie_consent.py      # Скрипт инициализации Cookie Consent
-├── frontend/src/
-│   ├── styles/
-│   │   └── mobile-bug-fixes.css    # CSS исправления 20 мобильных багов
-│   └── components/
-│       ├── CookieConsent.js        # Компонент баннера согласия
-│       └── admin/sections/
-│           └── CookieConsentSection.js  # Админ секция для Cookie Consent
-
-ИЗМЕНЕНО:
-├── frontend/src/App.css            # Добавлен импорт mobile-bug-fixes.css
-└── backend/server.py               # Добавлены API endpoints для Cookie Consent
+│   ├── init_database.py           # Базова ініціалізація
+│   ├── init_full_database.py      # Повна ініціалізація з даними
+│   ├── init_cookie_consent.py     # Ініціалізація Cookie Consent
+│   └── database_seed.json         # Seed дані для бази
+│
+└── docs/
+    ├── CHANGELOG.md               # Цей файл
+    ├── DEPLOYMENT_GUIDE.md        # Гайд по деплою
+    └── QUICK_DEPLOY.md            # Швидкий старт
 ```
 
 ---
 
-## Обзор изменений
+## 3. Швидкий старт
 
-### Архитектура Cookie Consent
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     COOKIE CONSENT СИСТЕМА                       │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│   FRONTEND                    BACKEND                 DATABASE  │
-│   ─────────                   ───────                 ────────  │
-│                                                                 │
-│   ┌──────────────┐     ┌─────────────────┐     ┌─────────────┐ │
-│   │CookieConsent │────▶│GET /api/cookie- │────▶│  MongoDB    │ │
-│   │    .js       │     │consent-settings │     │  cookie_    │ │
-│   │              │     │                 │     │  consent_   │ │
-│   │  • Banner    │     │PUT /api/admin/  │     │  settings   │ │
-│   │  • Modals    │     │cookie-consent-  │     │             │ │
-│   │  • Checkboxes│     │settings         │     │             │ │
-│   └──────────────┘     └─────────────────┘     └─────────────┘ │
-│          │                                                      │
-│          │                                                      │
-│   ┌──────────────┐                                             │
-│   │CookieConsent │     Админ-панель для управления:            │
-│   │  Section.js  │     • Включение/выключение баннера          │
-│   │              │     • Заголовок и описание                  │
-│   │  • General   │     • Текст Cookie Policy                   │
-│   │  • Cookie    │     • Текст Privacy Policy                  │
-│   │  • Privacy   │     • Текст Terms of Use                    │
-│   │  • Terms     │                                             │
-│   └──────────────┘                                             │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Поток пользователя
-
-1. Пользователь открывает сайт
-2. Проверяется `localStorage.fomo_consent`
-3. Если нет согласия → загружаются настройки из API
-4. Отображается баннер с чекбоксами
-5. Ссылки на политики открывают модальные окна
-6. После принятия → сохраняется в localStorage
-7. Баннер исчезает, сайт доступен
-
----
-
-## Мобильные исправления (20 багов)
-
-### Файл: `/frontend/src/styles/mobile-bug-fixes.css`
-
-Этот файл подключается через `/frontend/src/App.css`:
-
-```css
-@import './styles/mobile.css';
-@import './styles/mobile-bug-fixes.css';  /* ← НОВЫЙ */
-```
-
-### Критические баги (BUG-001 — BUG-006)
-
-| ID | Компонент | Проблема | Решение |
-|----|-----------|----------|---------|
-| **BUG-001** | Header | Crypto prices overflow | Скрытие на <480px, компактный вид на 481-768px |
-| **BUG-002** | Header | Utility Nav Buttons | Скрытие на <768px |
-| **BUG-003** | Evolution | Cards 288px fixed | Адаптивные: 260px/240px |
-| **BUG-004** | Utilities | Grid не адаптивный | flex-column на мобильных |
-| **BUG-005** | Team | 3 колонки всегда | flex-column/2 колонки |
-| **BUG-006** | Footer | Не стекуется | Вертикальный layout |
-
-### Средние баги (BUG-007 — BUG-014)
-
-| ID | Компонент | Проблема | Решение |
-|----|-----------|----------|---------|
-| **BUG-007** | Hero | Кнопки перекрываются | flex-column, 100% ширина |
-| **BUG-008** | Hero | Blob слишком большие | scale(0.5), opacity 0.3 |
-| **BUG-009** | Partners | Tabs маленькие | min-height 44px, скролл |
-| **BUG-010** | FAQ | Большие отступы | padding 16px/24px |
-| **BUG-011** | Roadmap | Горизонтальный timeline | flex-column |
-| **BUG-012** | Ecosystem | Grid не адаптирован | flex-column |
-| **BUG-013** | Platform | Images overflow | max-width 100% |
-| **BUG-014** | Mobile Menu | Некорректное закрытие | Fixed positioning, z-index |
-
-### Низкоприоритетные баги (BUG-015 — BUG-020)
-
-| ID | Компонент | Проблема | Решение |
-|----|-----------|----------|---------|
-| **BUG-015** | Typography | Фиксированные px | clamp() функции |
-| **BUG-016** | Breakpoints | Нет 320px/375px | Добавлены стили |
-| **BUG-017** | Touch | Targets <44px | min-height/width 44px |
-| **BUG-018** | Evolution | Внутренние отступы | padding 12px |
-| **BUG-019** | Social | Иконки маленькие | 24px, gap 12px |
-| **BUG-020** | Overflow | Злоупотребление hidden | Горизонтальный скролл где нужно |
-
----
-
-## Cookie Consent система
-
-### API Endpoints
-
-#### GET /api/cookie-consent-settings
-
-Получение настроек баннера и текстов политик.
-
-**Response:**
-```json
-{
-  "id": "uuid-string",
-  "enabled": true,
-  "title_en": "Cookie & Privacy Settings",
-  "description_en": "We value your privacy...",
-  "cookie_policy_content": "COOKIE POLICY\n\n1. WHAT ARE COOKIES?...",
-  "privacy_policy_content": "PRIVACY POLICY\n\n1. INTRODUCTION...",
-  "terms_content": "TERMS OF USE\n\n1. INTRODUCTION...",
-  "created_at": "2025-12-29T10:00:00Z",
-  "updated_at": "2025-12-29T10:00:00Z"
-}
-```
-
-#### PUT /api/admin/cookie-consent-settings
-
-Обновление настроек (требует авторизации).
-
-**Headers:**
-```
-Authorization: Bearer <admin_token>
-Content-Type: application/json
-```
-
-### Pydantic Models (backend/server.py)
-
-```python
-class CookieConsentSettings(BaseModel):
-    id: str
-    enabled: bool = True
-    title_en: str = "Cookie & Privacy Settings"
-    description_en: str = "We value your privacy..."
-    cookie_policy_content: str = ""
-    privacy_policy_content: str = ""
-    terms_content: str = ""
-    created_at: datetime
-    updated_at: datetime
-
-class CookieConsentUpdate(BaseModel):
-    enabled: Optional[bool] = None
-    title_en: Optional[str] = None
-    description_en: Optional[str] = None
-    cookie_policy_content: Optional[str] = None
-    privacy_policy_content: Optional[str] = None
-    terms_content: Optional[str] = None
-```
-
-### MongoDB Collection: `cookie_consent_settings`
-
-```javascript
-{
-  "id": "uuid-string",
-  "enabled": true,
-  "title_en": "Cookie & Privacy Settings",
-  "description_en": "We value your privacy...",
-  "cookie_policy_content": "COOKIE POLICY...",
-  "privacy_policy_content": "PRIVACY POLICY...",
-  "terms_content": "TERMS OF USE...",
-  "created_at": ISODate("2025-12-29T10:00:00Z"),
-  "updated_at": ISODate("2025-12-29T10:00:00Z")
-}
-```
-
-### Админ-панель: Cookie Consent Section
-
-**Путь:** Админ-панель → Cookie Consent (🍪)
-
-**Вкладки:**
-
-| Вкладка | Описание |
-|---------|----------|
-| ⚙️ General Settings | Enable/Disable, заголовок, описание |
-| 🍪 Cookie Policy | Полный текст Cookie Policy |
-| 🔒 Privacy Policy | Полный текст Privacy Policy |
-| 📄 Terms of Use | Полный текст Terms of Use |
-
----
-
-## Инструкция по развёртыванию
-
-### Требования
-
-- Node.js >= 16.x
-- Python >= 3.9
-- MongoDB >= 5.0
-- yarn
-
-### Шаг 1: Клонирование
+### Крок 1: Клонування репозиторію
 
 ```bash
 git clone https://github.com/Dima434444/FINAL01.git
 cd FINAL01
 ```
 
-### Шаг 2: Backend
+### Крок 2: Налаштування Backend
 
 ```bash
 cd backend
+
+# Створення віртуального середовища
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# або venv\Scripts\activate  # Windows
+
+# Встановлення залежностей
 pip install -r requirements.txt
 
-# Создать .env
+# Створення .env файлу
 cat > .env << EOF
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=fomo_db
@@ -271,155 +144,532 @@ CORS_ORIGINS=*
 EOF
 ```
 
-### Шаг 3: Frontend
+### Крок 3: Налаштування Frontend
 
 ```bash
 cd frontend
+
+# Встановлення залежностей
 yarn install
 
-# Создать .env
+# Створення .env файлу
 cat > .env << EOF
-REACT_APP_BACKEND_URL=https://your-domain.com
+REACT_APP_BACKEND_URL=http://localhost:8001
 EOF
 ```
 
-### Шаг 4: Инициализация базы данных
+### Крок 4: Ініціалізація бази даних
 
 ```bash
-# Основная инициализация
-python scripts/init_database.py
+cd scripts
 
-# Cookie Consent с политиками (ОБЯЗАТЕЛЬНО!)
-python scripts/init_cookie_consent.py
+# Повна ініціалізація з усіма даними
+python init_full_database.py
+
+# Або тільки Cookie Consent
+python init_cookie_consent.py
 ```
 
-### Шаг 5: Запуск
+### Крок 5: Запуск сервісів
 
 ```bash
-# Backend (порт 8001)
-cd backend && uvicorn server:app --host 0.0.0.0 --port 8001
+# Backend (термінал 1)
+cd backend
+uvicorn server:app --host 0.0.0.0 --port 8001 --reload
 
-# Frontend (порт 3000)
-cd frontend && yarn start
+# Frontend (термінал 2)
+cd frontend
+yarn start
 ```
 
-### Шаг 6: Проверка
+### Крок 6: Перевірка
 
-1. ✅ Откройте сайт в браузере
-2. ✅ Cookie Consent баннер должен появиться
-3. ✅ Кликните на ссылки политик — модалки должны открыться
-4. ✅ Примите согласие — баннер исчезнет
-5. ✅ Войдите в админ-панель и проверьте раздел Cookie Consent
+1. Відкрийте http://localhost:3000
+2. Дочекайтесь Loading Screen (2.5 сек)
+3. Прийміть Cookie Consent
+4. Перегляньте сайт
+5. Увійдіть в адмін-панель (пароль з .env)
 
 ---
 
-## Скрипты инициализации
+## 4. Функціональність
 
-### init_cookie_consent.py
+### 4.1 Loading Screen
 
-**Путь:** `/scripts/init_cookie_consent.py`
+**Файл:** `/frontend/src/components/LoadingScreen.js`
 
-**Использование:**
+Анімований екран завантаження з:
+- 🚀 Плаваюча ракета
+- 💎 Діамант
+- 📈 Графік
+- ⭕ Орбітальні кільця
+- 📊 Progress bar з відсотками
+
+**Налаштування:**
+```jsx
+<LoadingScreen 
+  onLoadingComplete={() => setIsLoading(false)}
+  minDuration={2500}  // тривалість в мс
+/>
+```
+
+### 4.2 Cookie Consent
+
+**Файли:**
+- `/frontend/src/components/CookieConsent.js` - Банер
+- `/frontend/src/components/admin/sections/CookieConsentSection.js` - Адмін
+- `/backend/server.py` - API endpoints
+
+**Функції:**
+- Банер з двома чекбоксами (Cookies + Privacy)
+- Модальні вікна з політиками
+- Управління з адмін-панелі
+- Збереження згоди в localStorage
+
+**API:**
+```
+GET  /api/cookie-consent-settings     - Отримати налаштування
+PUT  /api/admin/cookie-consent-settings - Оновити (потрібна авторизація)
+```
+
+### 4.3 Invite Modal (Wallet Connection)
+
+**Файл:** `/frontend/src/components/InviteModal.js`
+
+Модальне вікно реєстрації з Dynamic.xyz для підключення криптогаманця.
+
+**Кроки реєстрації:**
+1. **Connect Wallet** - підключення гаманця через Dynamic.xyz
+2. **Enter Invite Code** - введення інвайт-коду
+3. **Connect Twitter** - підключення Twitter (опціонально)
+4. **Complete** - завершення реєстрації
+
+**Підтримувані гаманці:**
+- MetaMask
+- WalletConnect
+- Coinbase Wallet
+- І інші через Dynamic.xyz
+
+**Налаштування Dynamic.xyz:**
+
+```javascript
+// В InviteModal.js
+const DYNAMIC_ENVIRONMENT_ID = 'your-dynamic-environment-id';
+
+// Конфігурація
+const dynamicSettings = {
+  environmentId: DYNAMIC_ENVIRONMENT_ID,
+  walletConnectors: [EthereumWalletConnectors]
+};
+```
+
+**API для гаманців:**
+```
+GET  /api/wallet/check/{address}  - Перевірка реєстрації гаманця
+POST /api/wallet/register         - Реєстрація гаманця
+```
+
+**Структура реєстрації:**
+```json
+{
+  "wallet_address": "0x...",
+  "invite_code": "ABC123",
+  "twitter_handle": "@user",
+  "registered_at": "2025-12-29T10:00:00Z"
+}
+```
+
+---
+
+## 5. Інтеграції
+
+### 5.1 Dynamic.xyz (Wallet Connection)
+
+**Встановлення:**
+```bash
+yarn add @dynamic-labs/sdk-react-core @dynamic-labs/ethereum
+```
+
+**Використання:**
+```jsx
+import { DynamicContextProvider, DynamicWidget, useDynamicContext } from '@dynamic-labs/sdk-react-core';
+import { EthereumWalletConnectors } from '@dynamic-labs/ethereum';
+
+// Обгортка
+<DynamicContextProvider settings={dynamicSettings}>
+  <YourComponent />
+</DynamicContextProvider>
+
+// Всередині компонента
+const { user, primaryWallet, setShowAuthFlow, handleLogOut } = useDynamicContext();
+```
+
+**Отримання даних гаманця:**
+```javascript
+const walletAddress = primaryWallet?.address;
+const isConnected = !!primaryWallet;
+```
+
+### 5.2 Framer Motion (Animations)
+
+**Встановлення:**
+```bash
+yarn add framer-motion
+```
+
+**Приклади використання:**
+
+```jsx
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Анімація появи
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.3 }}
+>
+  Content
+</motion.div>
+
+// Цикл анімації
+<motion.div
+  animate={{ 
+    y: [-10, 10, -10],
+    rotate: [0, 5, -5, 0]
+  }}
+  transition={{ 
+    duration: 3,
+    repeat: Infinity,
+    ease: 'easeInOut'
+  }}
+>
+  Floating element
+</motion.div>
+```
+
+---
+
+## 6. База даних
+
+### 6.1 Колекції MongoDB
+
+| Колекція | Опис | Документів |
+|----------|------|------------|
+| `team_members` | Члени команди | 6 |
+| `partners` | Партнери | 7 |
+| `faq_items` | FAQ питання | 8 |
+| `evolution_levels` | Рівні Evolution | 6 |
+| `evolution_badges` | Бейджі | 9 |
+| `utility_nav_buttons` | Кнопки навігації | 3 |
+| `cookie_consent_settings` | Налаштування Cookie | 1 |
+| `hero_settings` | Hero секція | 1 |
+| `about_settings` | About секція | 1 |
+| `footer_settings` | Footer | 1 |
+| `platform_settings` | Platform секція | 1 |
+| `community_settings` | Community | 1 |
+| `roadmap_settings` | Roadmap | 1 |
+| `utilities` | Утиліти | 4 |
+| `drawer_cards` | Ecosystem карточки | 4 |
+| `wallet_registrations` | Зареєстровані гаманці | N |
+
+### 6.2 Схеми документів
+
+**team_members:**
+```json
+{
+  "id": "uuid",
+  "name_en": "John Doe",
+  "position_en": "CEO",
+  "bio_en": "Description...",
+  "image_url": "https://...",
+  "social_links": {
+    "twitter": "https://twitter.com/...",
+    "linkedin": "https://linkedin.com/..."
+  },
+  "displayed_socials": ["twitter", "linkedin"],
+  "member_type": "team",
+  "order": 1
+}
+```
+
+**evolution_levels:**
+```json
+{
+  "id": "uuid",
+  "rank": "Beginner",
+  "fomo_score_min": 0,
+  "fomo_score_max": 100,
+  "next_level": "Intermediate",
+  "description": "Starting level",
+  "animation_type": "pulse",
+  "gradient_from": "#10b981",
+  "gradient_to": "#34d399",
+  "order": 1
+}
+```
+
+**cookie_consent_settings:**
+```json
+{
+  "id": "uuid",
+  "enabled": true,
+  "title_en": "Cookie & Privacy Settings",
+  "description_en": "We value your privacy...",
+  "cookie_policy_content": "COOKIE POLICY...",
+  "privacy_policy_content": "PRIVACY POLICY...",
+  "terms_content": "TERMS OF USE..."
+}
+```
+
+### 6.3 Ініціалізація бази
 
 ```bash
-# Стандартная инициализация (спрашивает подтверждение)
-python scripts/init_cookie_consent.py
+# Повна ініціалізація з усіма даними
+python scripts/init_full_database.py
 
-# Принудительное обновление без вопросов
-python scripts/init_cookie_consent.py --force
-
-# Полный сброс и пересоздание
-python scripts/init_cookie_consent.py --reset
+# Скидання та повторна ініціалізація
+python scripts/init_full_database.py --reset
 ```
 
-**Что делает:**
-- Создаёт запись в `cookie_consent_settings`
-- Заполняет `cookie_policy_content` (Cookie Policy)
-- Заполняет `privacy_policy_content` (Privacy Policy)
-- Заполняет `terms_content` (Terms of Use)
+---
 
-**Политики основаны на:**
-- https://www.fomo.cx/legal?type=policy
-- https://www.fomo.cx/legal?type=terms
-- https://www.fomo.cx/legal?type=disclaimer
+## 7. API Документація
+
+### 7.1 Публічні endpoints
+
+| Method | Endpoint | Опис |
+|--------|----------|------|
+| GET | `/api/` | Health check |
+| GET | `/api/crypto-prices` | Ціни BTC, ETH, ZK |
+| GET | `/api/team-members` | Команда |
+| GET | `/api/partners` | Партнери |
+| GET | `/api/faq` | FAQ |
+| GET | `/api/utilities` | Утиліти |
+| GET | `/api/evolution-levels` | Рівні Evolution |
+| GET | `/api/evolution-badges` | Бейджі |
+| GET | `/api/utility-nav-buttons` | Кнопки навігації |
+| GET | `/api/cookie-consent-settings` | Cookie налаштування |
+
+### 7.2 Wallet endpoints
+
+| Method | Endpoint | Опис |
+|--------|----------|------|
+| GET | `/api/wallet/check/{address}` | Перевірка реєстрації |
+| POST | `/api/wallet/register` | Реєстрація гаманця |
+
+### 7.3 Admin endpoints
+
+| Method | Endpoint | Опис |
+|--------|----------|------|
+| POST | `/api/admin/login` | Авторизація |
+| PUT | `/api/admin/{section}` | Оновлення секції |
+| PUT | `/api/admin/cookie-consent-settings` | Оновлення Cookie |
 
 ---
 
-## Связь с оригинальным проектом
+## 8. Адмін-панель
 
-### Оригинальный репозиторий
-- **GitHub:** https://github.com/Dima434444/FINAL01
+### 8.1 Доступ
 
-### Оригинальные политики FOMO
-- **Privacy Policy:** https://www.fomo.cx/legal?type=policy
-- **Terms of Use:** https://www.fomo.cx/legal?type=terms
-- **Disclaimer:** https://www.fomo.cx/legal?type=disclaimer
+- **URL:** `/admin` або іконка ⚙️ в header
+- **Пароль:** значення `ADMIN_PASSWORD` з `backend/.env`
 
-### Что было взято из оригинала
-1. Структура и текст Privacy Policy
-2. Структура и текст Terms of Use
-3. Структура Cookie Policy (адаптирована из Privacy Policy, раздел Cookies)
+### 8.2 Секції
 
-### Что было добавлено
-1. Cookie Consent баннер (frontend компонент)
-2. Модальные окна для политик (вместо внешних ссылок)
-3. Админ-панель для управления текстами политик
-4. API endpoints для Cookie Consent
-5. Скрипт автоматической инициализации
-6. 20 CSS исправлений для мобильной адаптивности
+| Секція | Опис |
+|--------|------|
+| 🏠 Hero | Головний банер |
+| 📝 About | Секція "Про нас" |
+| 🛠️ Utilities | Утиліти |
+| 📊 Platform | Platform статистика |
+| 🎮 Evolution | Levels & Badges |
+| 🌐 Ecosystem | Drawer карточки |
+| 🗺️ Roadmap | Дорожня карта |
+| 👥 Team | Команда |
+| 🤝 Partners | Партнери |
+| 💬 Community | Community секція |
+| 🦶 Footer | Футер |
+| ❓ FAQ | Питання-відповіді |
+| 🔘 Utility Nav | Кнопки навігації |
+| 📈 Analytics | Аналітика |
+| 🍪 Cookie Consent | Cookie банер та політики |
 
----
+### 8.3 Cookie Consent секція
 
-## Checklist для развёртывания
-
-### Обязательные шаги
-
-- [ ] Клонировать репозиторий
-- [ ] Установить зависимости backend (`pip install -r requirements.txt`)
-- [ ] Установить зависимости frontend (`yarn install`)
-- [ ] Создать `.env` файлы с правильными значениями
-- [ ] Запустить `python scripts/init_database.py`
-- [ ] Запустить `python scripts/init_cookie_consent.py`
-- [ ] Запустить backend и frontend
-- [ ] Проверить Cookie Consent баннер
-- [ ] Проверить модалки политик
-- [ ] Проверить админ-панель Cookie Consent
-- [ ] Проверить мобильную адаптивность (320px, 375px, 768px)
-
-### Рекомендуемые шаги
-
-- [ ] Изменить `ADMIN_PASSWORD` на безопасный
-- [ ] Отредактировать тексты политик под свой бренд
-- [ ] Протестировать на реальных мобильных устройствах
+**Вкладки:**
+1. ⚙️ **General Settings** - Enable/Disable, заголовок, опис
+2. 🍪 **Cookie Policy** - Текст Cookie Policy
+3. 🔒 **Privacy Policy** - Текст Privacy Policy
+4. 📄 **Terms of Use** - Текст Terms of Use
 
 ---
 
-## Поддержка
+## 9. Мобільна адаптивність
 
-При возникновении проблем:
+### 9.1 Виправлені баги
 
-1. **Проверьте логи backend:**
-   ```bash
-   tail -f /var/log/supervisor/backend.err.log
-   ```
+Всі 20 багів з `MOBILE_BUGS.md` виправлені в `/frontend/src/styles/mobile-bug-fixes.css`:
 
-2. **Проверьте логи frontend:**
-   ```bash
-   tail -f /var/log/supervisor/frontend.err.log
-   ```
+**Критичні (BUG-001 — BUG-006):**
+- Header crypto prices overflow
+- Utility nav buttons
+- Evolution cards sizing
+- Utilities/Team/Footer grids
 
-3. **Проверьте MongoDB:**
-   ```bash
-   mongosh --eval "db.cookie_consent_settings.findOne()"
-   ```
+**Середні (BUG-007 — BUG-014):**
+- Hero buttons overlap
+- Blob animations
+- Partners tabs
+- FAQ paddings
+- Roadmap timeline
+- Mobile menu
 
-4. **Пересоздайте Cookie Consent настройки:**
-   ```bash
-   python scripts/init_cookie_consent.py --reset
-   ```
+**Низькі (BUG-015 — BUG-020):**
+- Typography
+- Touch targets
+- Social icons
+- Overflow handling
+
+### 9.2 Горизонтальний скролл
+
+Секції з горизонтальним скролом на мобільному:
+- FAQ карточки
+- Team карточки
+- Partners карточки
+- Evolution карточки
+
+### 9.3 Breakpoints
+
+```css
+/* Galaxy Fold */
+@media (max-width: 320px) { }
+
+/* iPhone SE, 12 mini */
+@media (max-width: 375px) { }
+
+/* Large mobile */
+@media (max-width: 425px) { }
+
+/* Tablet */
+@media (max-width: 768px) { }
+
+/* Desktop */
+@media (min-width: 769px) { }
+```
 
 ---
 
-**FOMO Platform** © 2025 | Built with ❤️ for the crypto community
+## 10. Деплоймент
 
-*Changelog version: 1.1.0*
+### 10.1 Локальний деплоймент
+
+```bash
+# 1. Клонування
+git clone https://github.com/Dima434444/FINAL01.git
+
+# 2. Backend
+cd backend
+pip install -r requirements.txt
+# Налаштувати .env
+
+# 3. Frontend
+cd frontend
+yarn install
+# Налаштувати .env
+
+# 4. Database
+cd scripts
+python init_full_database.py
+
+# 5. Запуск
+# Backend: uvicorn server:app --port 8001
+# Frontend: yarn start
+```
+
+### 10.2 Production деплоймент
+
+**Необхідні кроки:**
+1. Змінити `ADMIN_PASSWORD` на безпечний
+2. Налаштувати MongoDB Atlas або власний сервер
+3. Оновити `REACT_APP_BACKEND_URL` на production URL
+4. Налаштувати CORS в backend
+5. Додати SSL сертифікат
+
+**Змінні середовища для production:**
+
+```env
+# Backend
+MONGO_URL=mongodb+srv://user:pass@cluster.mongodb.net/fomo_db
+DB_NAME=fomo_db
+ADMIN_PASSWORD=super_secure_password_123
+CORS_ORIGINS=https://yourdomain.com
+
+# Frontend
+REACT_APP_BACKEND_URL=https://api.yourdomain.com
+```
+
+### 10.3 Перевірка деплою
+
+```bash
+# Перевірка API
+curl https://api.yourdomain.com/api/
+
+# Перевірка Cookie Consent
+curl https://api.yourdomain.com/api/cookie-consent-settings
+
+# Перевірка бази
+python -c "
+import asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
+async def check():
+    client = AsyncIOMotorClient('your_mongo_url')
+    db = client.fomo_db
+    for coll in await db.list_collection_names():
+        count = await db[coll].count_documents({})
+        print(f'{coll}: {count}')
+asyncio.run(check())
+"
+```
+
+---
+
+## Changelog
+
+### v1.2.0 (29.12.2025) - Поточна версія
+
+**Нові функції:**
+- ✅ Loading Screen з космічною тематикою (світла тема)
+- ✅ Cookie Consent з модалками політик
+- ✅ Адмін-панель для Cookie Consent
+- ✅ Горизонтальний скролл FAQ на мобільному
+- ✅ Повний скрипт ініціалізації бази з seed даними
+
+**Виправлення:**
+- ✅ 20 мобільних багів з MOBILE_BUGS.md
+- ✅ Ecosystem hint приховано на мобільному
+- ✅ MongoDB ObjectId serialization
+
+### v1.1.0
+
+- Початкова інтеграція Cookie Consent
+- Базові мобільні фікси
+
+### v1.0.0
+
+- Початковий реліз з GitHub
+
+---
+
+## Контакти
+
+**GitHub:** https://github.com/Dima434444/FINAL01
+
+**Документація:**
+- `DEPLOYMENT_GUIDE.md` - Повний гайд
+- `QUICK_DEPLOY.md` - Швидкий старт
+- `MOBILE_BUGS.md` - Список мобільних багів
+
+---
+
+*Документ оновлено: 29 грудня 2025*
