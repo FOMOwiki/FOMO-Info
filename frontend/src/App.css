@@ -2,6 +2,7 @@
 @import './styles/mobile.css';
 @import './styles/mobile-fixes.css';
 @import './styles/mobile-medium-fixes.css';
+@import './styles/mobile-low-fixes.css';
 
 
 /* ==================== ANIMATED CURSOR WITH TRAIL ==================== */
