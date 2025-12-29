@@ -114,6 +114,7 @@ python init_cookie_consent.py  # Cookie Consent с политиками
 - Ecosystem, Roadmap, Team
 - Partners, Community, Footer, FAQ
 - Utility Nav Buttons, Analytics
+- **🍪 Cookie Consent** — управление баннером и политиками
 
 ## 🎯 Ключевые особенности
 
