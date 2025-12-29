@@ -7,6 +7,7 @@ import { useScrollAnimation, useRipple, useDataFetch } from "./hooks";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import InviteModal from "./components/InviteModal";
 import CookieConsent from "./components/CookieConsent";
+import LoadingScreen from "./components/LoadingScreen";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
