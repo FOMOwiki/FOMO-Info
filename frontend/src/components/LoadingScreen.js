@@ -76,27 +76,27 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
             overflow: 'hidden'
           }}
         >
-          {/* Subtle floating particles - light green */}
+          {/* Subtle floating particles - light green (reduced) */}
           <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-            {[...Array(20)].map((_, i) => (
+            {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ 
-                  opacity: [0.3, 0.6, 0.3],
-                  y: [-20, -100, -20]
+                  opacity: [0.2, 0.4, 0.2],
+                  y: [-20, -80, -20]
                 }}
                 transition={{
-                  duration: Math.random() * 4 + 3,
+                  duration: Math.random() * 5 + 4,
                   repeat: Infinity,
-                  delay: Math.random() * 2
+                  delay: Math.random() * 3
                 }}
                 style={{
                   position: 'absolute',
-                  left: `${Math.random() * 100}%`,
-                  top: `${60 + Math.random() * 40}%`,
-                  width: `${Math.random() * 8 + 4}px`,
-                  height: `${Math.random() * 8 + 4}px`,
+                  left: `${15 + (i * 10)}%`,
+                  top: `${65 + (i % 3) * 10}%`,
+                  width: `${Math.random() * 6 + 3}px`,
+                  height: `${Math.random() * 6 + 3}px`,
                   background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
                   borderRadius: '50%',
                   filter: 'blur(1px)'
