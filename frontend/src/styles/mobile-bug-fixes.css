@@ -245,6 +245,62 @@
   }
 }
 
+/* FAQ Section - Horizontal scroll on mobile */
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 60px 0 !important;
+  }
+  
+  .faq-container {
+    padding: 0 16px !important;
+  }
+  
+  .faq-title {
+    font-size: 48px !important;
+    margin-bottom: 32px !important;
+  }
+  
+  .faq-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .faq-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .faq-item {
+    flex: 0 0 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+    min-height: 140px !important;
+    padding: 20px 24px !important;
+    scroll-snap-align: start;
+  }
+  
+  .faq-question {
+    font-size: 16px !important;
+  }
+  
+  .faq-icon {
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .faq-answer {
+    font-size: 14px !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+  }
+}
+
 /* BUG-011: Roadmap Section - Horizontal timeline */
 @media (max-width: 768px) {
   .roadmap-timeline,
