@@ -112,6 +112,8 @@ const AdminDashboard = () => {
         return <FooterSection {...props} />;
       case 'faq':
         return <FAQSection {...props} />;
+      case 'cookie-consent':
+        return <CookieConsentSection {...props} />;
       case 'analytics':
         return <AnalyticsSection {...props} />;
       default:
