@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
 const CookieConsentSection = ({ showNotification }) => {
   const [settings, setSettings] = useState({
     enabled: true,
-    privacy_policy_url: '/privacy',
-    terms_url: '/terms',
-    cookie_policy_url: '/cookies',
     title_en: 'Cookie & Privacy Settings',
-    description_en: 'We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.'
+    description_en: 'We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.',
+    cookie_policy_content: '',
+    privacy_policy_content: '',
+    terms_content: ''
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState('general');
+
+  const API = process.env.REACT_APP_BACKEND_URL || '';
 
   useEffect(() => {
     fetchSettings();
@@ -21,37 +21,42 @@ const CookieConsentSection = ({ showNotification }) => {
 
   const fetchSettings = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get(`${API}/api/cookie-consent-settings`);
-      setSettings(response.data);
+      const res = await fetch(`${API}/api/cookie-consent-settings`);
+      if (res.ok) {
+        const data = await res.json();
+        setSettings(prev => ({
+          ...prev,
+          ...data
+        }));
+      }
     } catch (error) {
-      console.error('Error fetching cookie consent settings:', error);
-      showNotification('Failed to load settings', 'error');
+      console.error('Failed to fetch cookie consent settings:', error);
     } finally {
       setLoading(false);
     }
   };
 
   const handleSave = async () => {
+    setSaving(true);
     try {
-      setSaving(true);
       const token = localStorage.getItem('admin_token');
-      
-      await axios.put(
-        `${API}/api/admin/cookie-consent-settings`,
-        settings,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      
-      showNotification('✅ Cookie consent settings saved successfully!', 'success');
+      const res = await fetch(`${API}/api/admin/cookie-consent-settings`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(settings)
+      });
+
+      if (res.ok) {
+        showNotification('Cookie consent settings saved successfully!', 'success');
+      } else {
+        throw new Error('Failed to save settings');
+      }
     } catch (error) {
-      console.error('Error saving settings:', error);
-      showNotification('❌ Failed to save settings', 'error');
+      console.error('Failed to save settings:', error);
+      showNotification('Failed to save settings', 'error');
     } finally {
       setSaving(false);
     }
@@ -66,169 +71,220 @@ const CookieConsentSection = ({ showNotification }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500"></div>
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
+  const tabs = [
+    { id: 'general', label: '⚙️ General Settings', icon: '⚙️' },
+    { id: 'cookie', label: '🍪 Cookie Policy', icon: '🍪' },
+    { id: 'privacy', label: '🔒 Privacy Policy', icon: '🔒' },
+    { id: 'terms', label: '📄 Terms of Use', icon: '📄' }
+  ];
+
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl p-6 text-white">
-        <h2 className="text-2xl font-bold mb-2">🍪 Cookie Consent Settings</h2>
-        <p className="text-emerald-50">
-          Manage cookie consent banner, privacy policy links, and messages displayed to users.
-        </p>
-      </div>
-
-      {/* Enable/Disable */}
-      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-        <div className="flex items-center justify-between">
+      <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl p-6 text-white">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+            <span className="text-2xl">🍪</span>
+          </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-1">Enable Cookie Consent</h3>
-            <p className="text-sm text-gray-600">
-              Show cookie consent banner to first-time visitors
+            <h2 className="text-2xl font-bold">Cookie Consent Settings</h2>
+            <p className="text-emerald-100 text-sm mt-1">
+              Manage the cookie consent banner and legal policy content
             </p>
           </div>
-          <label className="relative inline-flex items-center cursor-pointer">
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-2">
+        {tabs.map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+              activeTab === tab.id
+                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* General Settings Tab */}
+      {activeTab === 'general' && (
+        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
+          <h3 className="text-lg font-bold text-gray-900 mb-4">⚙️ General Settings</h3>
+          
+          {/* Enable Toggle */}
+          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div>
+              <h4 className="font-semibold text-gray-900">Enable Cookie Consent Banner</h4>
+              <p className="text-sm text-gray-500">Show the consent banner to new visitors</p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.enabled}
+                onChange={(e) => handleChange('enabled', e.target.checked)}
+                className="sr-only peer"
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+            </label>
+          </div>
+
+          {/* Title */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Banner Title
+            </label>
             <input
-              type="checkbox"
-              checked={settings.enabled}
-              onChange={(e) => handleChange('enabled', e.target.checked)}
-              className="sr-only peer"
+              type="text"
+              value={settings.title_en}
+              onChange={(e) => handleChange('title_en', e.target.value)}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              placeholder="Cookie & Privacy Settings"
             />
-            <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-emerald-500"></div>
-          </label>
-        </div>
-      </div>
+          </div>
 
-      {/* URLs Section */}
-      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">🔗 Policy Links</h3>
-        
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Privacy Policy URL
-          </label>
-          <input
-            type="text"
-            value={settings.privacy_policy_url}
-            onChange={(e) => handleChange('privacy_policy_url', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            placeholder="/privacy"
-          />
-          <p className="mt-1 text-xs text-gray-500">Link to your privacy policy page</p>
+          {/* Description */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Banner Description
+            </label>
+            <textarea
+              value={settings.description_en}
+              onChange={(e) => handleChange('description_en', e.target.value)}
+              rows="3"
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+              placeholder="We value your privacy..."
+            />
+          </div>
         </div>
+      )}
 
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Terms & Conditions URL
-          </label>
-          <input
-            type="text"
-            value={settings.terms_url}
-            onChange={(e) => handleChange('terms_url', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            placeholder="/terms"
-          />
-          <p className="mt-1 text-xs text-gray-500">Link to your terms and conditions</p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Cookie Policy URL
-          </label>
-          <input
-            type="text"
-            value={settings.cookie_policy_url}
-            onChange={(e) => handleChange('cookie_policy_url', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            placeholder="/cookies"
-          />
-          <p className="mt-1 text-xs text-gray-500">Link to your cookie policy</p>
-        </div>
-      </div>
-
-      {/* English Content */}
-      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">🇬🇧 English Content</h3>
-        
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Title (English)
-          </label>
-          <input
-            type="text"
-            value={settings.title_en}
-            onChange={(e) => handleChange('title_en', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            placeholder="Cookie & Privacy Settings"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Description (English)
-          </label>
+      {/* Cookie Policy Tab */}
+      {activeTab === 'cookie' && (
+        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-2xl">🍪</span>
+            <h3 className="text-lg font-bold text-gray-900">Cookie Policy Content</h3>
+          </div>
+          <p className="text-sm text-gray-500 mb-4">
+            This content will be displayed when users click on "Cookie Policy" link in the consent banner.
+          </p>
           <textarea
-            value={settings.description_en}
-            onChange={(e) => handleChange('description_en', e.target.value)}
-            rows="3"
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-            placeholder="We value your privacy..."
+            value={settings.cookie_policy_content}
+            onChange={(e) => handleChange('cookie_policy_content', e.target.value)}
+            rows="20"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-mono text-sm"
+            placeholder="Enter your Cookie Policy content here...
+
+COOKIE POLICY
+
+1. WHAT ARE COOKIES?
+Cookies are small text files placed on your device...
+
+2. TYPES OF COOKIES WE USE
+- Essential Cookies
+- Analytics Cookies
+- Advertising Cookies
+
+3. MANAGING COOKIES
+..."
           />
         </div>
-      </div>
+      )}
 
-      {/* Preview */}
-      <div className="bg-gradient-to-br from-gray-50 to-emerald-50/30 rounded-xl p-6 border border-gray-200">
-        <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-          👁️ Preview
-        </h3>
-        <div className="bg-white rounded-lg p-4 border border-gray-200 space-y-2">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">🍪</span>
-            </div>
-            <div className="flex-1">
-              <p className="font-bold text-gray-900">{settings.title_en}</p>
-              <p className="text-sm text-gray-600 mt-1">{settings.description_en}</p>
-            </div>
+      {/* Privacy Policy Tab */}
+      {activeTab === 'privacy' && (
+        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-2xl">🔒</span>
+            <h3 className="text-lg font-bold text-gray-900">Privacy Policy Content</h3>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-            </svg>
-            Links: {settings.privacy_policy_url}, {settings.terms_url}
-          </div>
+          <p className="text-sm text-gray-500 mb-4">
+            This content will be displayed when users click on "Privacy Policy" link in the consent banner.
+          </p>
+          <textarea
+            value={settings.privacy_policy_content}
+            onChange={(e) => handleChange('privacy_policy_content', e.target.value)}
+            rows="20"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-mono text-sm"
+            placeholder="Enter your Privacy Policy content here...
+
+PRIVACY POLICY
+
+1. INTRODUCTION
+Welcome to FOMO. We respect your privacy...
+
+2. WHAT INFORMATION WE COLLECT
+- Personal information you provide
+- Automatically collected data
+
+3. HOW WE USE YOUR INFORMATION
+..."
+          />
         </div>
-      </div>
+      )}
+
+      {/* Terms of Use Tab */}
+      {activeTab === 'terms' && (
+        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-2xl">📄</span>
+            <h3 className="text-lg font-bold text-gray-900">Terms of Use Content</h3>
+          </div>
+          <p className="text-sm text-gray-500 mb-4">
+            This content will be displayed when users click on "Terms of Use" link in the consent banner.
+          </p>
+          <textarea
+            value={settings.terms_content}
+            onChange={(e) => handleChange('terms_content', e.target.value)}
+            rows="20"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-mono text-sm"
+            placeholder="Enter your Terms of Use content here...
+
+TERMS OF USE
+
+1. INTRODUCTION
+Welcome to FOMO. These Terms of Use constitute...
+
+2. ACCEPTANCE OF TERMS
+By using FOMO, you confirm...
+
+3. USE OF THE SITE
+..."
+          />
+        </div>
+      )}
 
       {/* Save Button */}
-      <div className="flex justify-end gap-3 pt-4">
-        <button
-          onClick={fetchSettings}
-          disabled={saving}
-          className="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all disabled:opacity-50"
-        >
-          Reset
-        </button>
+      <div className="flex justify-end">
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {saving ? (
-            <span className="flex items-center gap-2">
-              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-              </svg>
+            <>
+              <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
               Saving...
-            </span>
+            </>
           ) : (
-            '💾 Save Settings'
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Save Settings
+            </>
           )}
         </button>
       </div>
