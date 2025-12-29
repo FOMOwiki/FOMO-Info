@@ -181,37 +181,6 @@ const CookieConsentSection = ({ showNotification }) => {
         </div>
       </div>
 
-      {/* Russian Content */}
-      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 space-y-4">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">🇷🇺 Russian Content</h3>
-        
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Заголовок (Russian)
-          </label>
-          <input
-            type="text"
-            value={settings.title_ru}
-            onChange={(e) => handleChange('title_ru', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            placeholder="Настройки Cookie и Конфиденциальности"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Описание (Russian)
-          </label>
-          <textarea
-            value={settings.description_ru}
-            onChange={(e) => handleChange('description_ru', e.target.value)}
-            rows="3"
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-            placeholder="Мы ценим вашу конфиденциальность..."
-          />
-        </div>
-      </div>
-
       {/* Preview */}
       <div className="bg-gradient-to-br from-gray-50 to-emerald-50/30 rounded-xl p-6 border border-gray-200">
         <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
