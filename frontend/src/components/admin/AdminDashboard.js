@@ -16,6 +16,7 @@ import FAQSection from './sections/FAQSection';
 import AnalyticsSection from './sections/AnalyticsSection';
 import EvolutionSection from './sections/EvolutionSection';
 import UtilityNavButtonsSection from './sections/UtilityNavButtonsSection';
+import CookieConsentSection from './sections/CookieConsentSection';
 
 const API = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
