@@ -447,7 +447,7 @@
 - ✅ Нет ошибок
 - ✅ Изменения применены
 
-**URL:** https://finapp-deploy-1.preview.emergentagent.com
+**URL:** https://blockchainapp-2.preview.emergentagent.com
 
 ---
 

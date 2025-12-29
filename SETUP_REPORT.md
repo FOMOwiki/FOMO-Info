@@ -37,7 +37,7 @@
 ### 3. **Настройка Frontend** ✅
 - ✅ Установлены все Node.js зависимости (yarn)
 - ✅ Настроен `.env` файл:
-  - `REACT_APP_BACKEND_URL`: https://finapp-deploy-1.preview.emergentagent.com/api
+  - `REACT_APP_BACKEND_URL`: https://blockchainapp-2.preview.emergentagent.com/api
 - ✅ Frontend запущен на порту 3000
 - ✅ Компиляция прошла успешно (только warnings ESLint)
 

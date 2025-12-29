@@ -3,9 +3,9 @@
 ## 📱 Доступ к приложению
 
 ### 🌐 URL адреса:
-- **Frontend (главная страница):** https://finapp-deploy-1.preview.emergentagent.com
-- **Backend API:** https://finapp-deploy-1.preview.emergentagent.com/api
-- **Админ-панель:** https://finapp-deploy-1.preview.emergentagent.com/admin
+- **Frontend (главная страница):** https://blockchainapp-2.preview.emergentagent.com
+- **Backend API:** https://blockchainapp-2.preview.emergentagent.com/api
+- **Админ-панель:** https://blockchainapp-2.preview.emergentagent.com/admin
 
 ### 🔐 Админ доступ:
 - **Пароль:** `admin123`
@@ -81,17 +81,17 @@ tail -f /var/log/supervisor/frontend.out.log
 
 ### Health check:
 ```bash
-curl https://finapp-deploy-1.preview.emergentagent.com/api/
+curl https://blockchainapp-2.preview.emergentagent.com/api/
 ```
 
 ### Цены криптовалют:
 ```bash
-curl https://finapp-deploy-1.preview.emergentagent.com/api/crypto-prices
+curl https://blockchainapp-2.preview.emergentagent.com/api/crypto-prices
 ```
 
 ### Авторизация админа:
 ```bash
-curl -X POST https://finapp-deploy-1.preview.emergentagent.com/api/admin/login \
+curl -X POST https://blockchainapp-2.preview.emergentagent.com/api/admin/login \
   -H "Content-Type: application/json" \
   -d '{"password": "admin123"}'
 ```
@@ -142,7 +142,7 @@ python init_database.py
 
 2. **URL Backend:**
    - Frontend использует URL из `/app/frontend/.env`
-   - Текущий: `https://finapp-deploy-1.preview.emergentagent.com/api`
+   - Текущий: `https://blockchainapp-2.preview.emergentagent.com/api`
    - При смене домена обновите этот файл
 
 3. **CORS настройки:**
@@ -154,16 +154,16 @@ python init_database.py
 ## 🚀 Следующие шаги
 
 1. **Откройте приложение:**
-   - Перейдите на https://finapp-deploy-1.preview.emergentagent.com
+   - Перейдите на https://blockchainapp-2.preview.emergentagent.com
    - Изучите функционал
 
 2. **Зайдите в админку:**
-   - URL: https://finapp-deploy-1.preview.emergentagent.com/admin
+   - URL: https://blockchainapp-2.preview.emergentagent.com/admin
    - Пароль: `admin123`
    - Протестируйте управление контентом
 
 3. **Проверьте API:**
-   - Откройте https://finapp-deploy-1.preview.emergentagent.com/api/crypto-prices
+   - Откройте https://blockchainapp-2.preview.emergentagent.com/api/crypto-prices
    - Убедитесь, что цены обновляются
 
 4. **Доработка:**
