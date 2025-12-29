@@ -5654,17 +5654,57 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 bg-white rounded-2xl shadow-xl p-4" data-testid="mobile-menu">
-            {navItems.map((item) => (
-              <a key={item.key} href={item.href} className="block text-gray-700 font-medium py-2">{item.label}</a>
-            ))}
+          <>
+            {/* Overlay to close menu when clicking outside */}
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" 
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            ></div>
             
-            <div className="flex gap-2 mt-3 pt-3 border-t border-gray-100">
-              <a href={actionButtons.crypto?.url || '#crypto'} target={actionButtons.crypto?.url?.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all">{actionButtons.crypto?.label || 'Crypto'}</a>
-              <a href={actionButtons.core?.url || '#core'} target={actionButtons.core?.url?.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all">{actionButtons.core?.label || 'Core'}</a>
-              <a href={actionButtons.utility?.url || '#utility'} target={actionButtons.utility?.url?.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all">{actionButtons.utility?.label || 'Utility'}</a>
+            <div className="relative z-50 lg:hidden mt-4 bg-white rounded-2xl shadow-xl p-4" data-testid="mobile-menu">
+              {navItems.map((item) => (
+                <a 
+                  key={item.key} 
+                  href={item.href} 
+                  className="block text-gray-700 font-medium py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              
+              <div className="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                <a 
+                  href={actionButtons.crypto?.url || '#crypto'} 
+                  target={actionButtons.crypto?.url?.startsWith('http') ? '_blank' : '_self'} 
+                  rel="noopener noreferrer" 
+                  className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {actionButtons.crypto?.label || 'Crypto'}
+                </a>
+                <a 
+                  href={actionButtons.core?.url || '#core'} 
+                  target={actionButtons.core?.url?.startsWith('http') ? '_blank' : '_self'} 
+                  rel="noopener noreferrer" 
+                  className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {actionButtons.core?.label || 'Core'}
+                </a>
+                <a 
+                  href={actionButtons.utility?.url || '#utility'} 
+                  target={actionButtons.utility?.url?.startsWith('http') ? '_blank' : '_self'} 
+                  rel="noopener noreferrer" 
+                  className="flex-1 text-center py-2 px-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-500 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {actionButtons.utility?.label || 'Utility'}
+                </a>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </nav>
