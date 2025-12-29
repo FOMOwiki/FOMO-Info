@@ -9162,8 +9162,18 @@ const MainSite = () => {
 
 // ==================== APP WITH ROUTER ====================
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <LanguageProvider>
+      {/* Loading Screen - shown on initial load */}
+      {isLoading && (
+        <LoadingScreen 
+          onLoadingComplete={() => setIsLoading(false)}
+          minDuration={2500}
+        />
+      )}
+      
       <CustomCursor />
       <CookieConsent />
       <BrowserRouter>
