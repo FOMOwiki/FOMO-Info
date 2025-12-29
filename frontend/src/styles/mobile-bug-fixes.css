@@ -1,0 +1,558 @@
+/* ==================== MOBILE BUG FIXES - Based on MOBILE_BUGS.md ==================== */
+/* Version: 1.0 - December 2025 */
+
+/* ==================== CRITICAL BUGS (BUG-001 to BUG-006) ==================== */
+
+/* BUG-001: Header - Crypto prices overflow on mobile */
+@media (max-width: 480px) {
+  /* Hide crypto prices ticker on small mobile */
+  .crypto-prices-ticker,
+  .crypto-ticker,
+  .header-crypto-prices,
+  [class*="crypto-price"] {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Compact crypto prices on tablets/large mobile */
+  .crypto-prices-ticker,
+  .crypto-ticker {
+    font-size: 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .crypto-ticker-item {
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Hide coin names, show only symbols */
+  .crypto-name-full {
+    display: none !important;
+  }
+}
+
+/* BUG-002: Header - Utility Nav Buttons not adapted */
+@media (max-width: 768px) {
+  .action-buttons-group,
+  .utility-nav-buttons,
+  .nav-utility-buttons,
+  .action-btn-outline,
+  .action-btn-featured {
+    display: none !important;
+  }
+}
+
+/* BUG-003: Evolution Cards - Fixed 288px size */
+@media (max-width: 375px) {
+  .evolution-card,
+  .level-card,
+  [class*="evolution"] > .card {
+    min-width: 260px !important;
+    max-width: 260px !important;
+    width: 260px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .evolution-card,
+  .level-card,
+  [class*="evolution"] > .card {
+    min-width: 240px !important;
+    max-width: 240px !important;
+    width: 240px !important;
+    height: auto !important;
+    min-height: 140px !important;
+  }
+  
+  .evolution-card-content {
+    padding: 12px !important;
+  }
+}
+
+/* BUG-004: Utilities Section - Grid not adaptive */
+@media (max-width: 480px) {
+  .utilities-grid,
+  .utilities-cards-grid,
+  [class*="utilities"] .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .utility-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .utilities-grid,
+  .utilities-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* BUG-005: Team Section - Grid stays 3 columns */
+@media (max-width: 480px) {
+  .team-grid,
+  .team-members-grid,
+  [class*="team"] .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .team-member-card,
+  .team-card {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .team-grid,
+  .team-members-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* BUG-006: Footer - Columns don't stack */
+@media (max-width: 768px) {
+  .footer-content,
+  .footer-columns,
+  footer .flex,
+  footer .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .footer-column,
+  .footer-section {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  .footer-nav-section {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .footer-social-links {
+    justify-content: center !important;
+  }
+}
+
+
+/* ==================== MEDIUM BUGS (BUG-007 to BUG-014) ==================== */
+
+/* BUG-007: Hero Section - Buttons overlap */
+@media (max-width: 375px) {
+  .hero-buttons,
+  .hero-cta-buttons,
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  
+  .hero-buttons button,
+  .hero-buttons a,
+  .hero-cta-buttons button,
+  .hero-cta-buttons a {
+    width: 100% !important;
+    min-width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* BUG-008: Hero Section - Blob animations too large */
+@media (max-width: 768px) {
+  .hero-blob,
+  .blob-1,
+  .blob-2,
+  .blob-3 {
+    transform: scale(0.5) !important;
+    opacity: 0.3 !important;
+  }
+  
+  .blob-1 {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .blob-2 {
+    width: 250px !important;
+    height: 250px !important;
+  }
+  
+  .blob-3 {
+    width: 175px !important;
+    height: 175px !important;
+  }
+}
+
+/* BUG-009: Partners Section - Tabs too small */
+@media (max-width: 480px) {
+  .partners-tabs-row,
+  .partner-tab-btn,
+  .partners-category-tabs {
+    min-height: 44px !important;
+  }
+  
+  .partner-tab-btn {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+  }
+  
+  .partners-tabs-row {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px !important;
+  }
+  
+  .partners-tabs-row::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* BUG-010: FAQ Section - Large paddings */
+@media (max-width: 480px) {
+  .faq-container,
+  .faq-section .container,
+  [class*="faq"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .faq-item {
+    padding: 12px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .faq-container,
+  .faq-section .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* BUG-011: Roadmap Section - Horizontal timeline */
+@media (max-width: 768px) {
+  .roadmap-timeline,
+  .roadmap-tasks-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .roadmap-task-card {
+    width: 100% !important;
+    flex-direction: row !important;
+  }
+}
+
+/* BUG-012: Ecosystem Section - Grid not adapted */
+@media (max-width: 768px) {
+  .ecosystem-grid,
+  .ecosystem-cards,
+  [class*="ecosystem"] .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .ecosystem-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* BUG-013: Platform Section - Images overflow */
+@media (max-width: 480px) {
+  .platform-section img,
+  .platform-card img,
+  [class*="platform"] img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  
+  .platform-card,
+  .platform-stat-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+}
+
+/* BUG-014: Mobile Menu - Incorrect closing */
+@media (max-width: 768px) {
+  .mobile-menu-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 998 !important;
+  }
+  
+  .mobile-menu-content {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: white !important;
+    border-radius: 24px 24px 0 0 !important;
+    padding: 24px !important;
+    z-index: 999 !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+  }
+  
+  .mobile-menu-close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    z-index: 1000 !important;
+  }
+}
+
+
+/* ==================== LOW PRIORITY BUGS (BUG-015 to BUG-020) ==================== */
+
+/* BUG-015: Typography - Fixed px values */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem) !important;
+  }
+  
+  p, .text-base {
+    font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+  }
+  
+  .text-sm {
+    font-size: clamp(0.75rem, 3vw, 0.875rem) !important;
+  }
+}
+
+/* BUG-016: Missing important breakpoints - 320px & 375px */
+@media (max-width: 320px) {
+  /* Galaxy Fold specific */
+  body {
+    min-width: 280px !important;
+  }
+  
+  .container {
+    padding: 0 12px !important;
+  }
+  
+  section {
+    padding: 2rem 12px !important;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  
+  .hero-section {
+    padding: 4rem 12px 2rem !important;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  /* iPhone SE, iPhone 12 mini */
+  .container {
+    padding: 0 14px !important;
+  }
+  
+  section {
+    padding: 2.5rem 14px !important;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+  /* Large mobile */
+  .container {
+    padding: 0 16px !important;
+  }
+}
+
+/* BUG-017: Touch targets too small */
+@media (max-width: 768px) {
+  button,
+  a,
+  [role="button"],
+  .clickable,
+  input[type="checkbox"],
+  input[type="radio"],
+  .nav-link,
+  .tab-btn,
+  .social-link {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  /* Social icons in footer and community */
+  .footer-social-links a,
+  .community-social-button,
+  .team-social-link {
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* BUG-018: Evolution Cards - Padding inside */
+@media (max-width: 375px) {
+  .evolution-card-content,
+  .level-card-content {
+    padding: 12px !important;
+  }
+  
+  .evolution-card h3,
+  .level-card h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .evolution-card p,
+  .level-card p {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* BUG-019: Social Icons - Size for touch */
+@media (max-width: 768px) {
+  .social-icon,
+  .footer-social-icon,
+  .community-social-icon,
+  .team-social-link svg,
+  [class*="social"] svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .footer-social-links,
+  .community-socials,
+  .team-social-links {
+    gap: 12px !important;
+  }
+}
+
+/* BUG-020: Overflow hidden abuse - Careful handling */
+@media (max-width: 768px) {
+  /* Allow horizontal scroll where needed */
+  .partners-tabs-row,
+  .team-tabs,
+  .evolution-tabs,
+  .roadmap-filters,
+  .utilities-carousel {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* But keep vertical sections contained */
+  section {
+    overflow-x: hidden !important;
+  }
+}
+
+
+/* ==================== ADDITIONAL MOBILE OPTIMIZATIONS ==================== */
+
+/* Smooth scrolling on touch devices */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent horizontal scroll on body */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Partners grid responsive */
+@media (max-width: 1200px) {
+  .partners-grid-new {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-grid-new {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-grid-new {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Drawer carousel responsive */
+@media (max-width: 768px) {
+  .drawer-card-carousel {
+    width: 300px !important;
+    height: 200px !important;
+  }
+  
+  .drawer-carousel-stack {
+    height: 320px !important;
+  }
+  
+  .drawer-container-carousel {
+    min-height: 450px !important;
+    padding: 20px 10px 40px !important;
+  }
+  
+  .drawer-card-title-carousel {
+    font-size: 18px !important;
+  }
+  
+  .drawer-nav-button {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer-card-carousel {
+    width: 260px !important;
+    height: 170px !important;
+  }
+  
+  .drawer-carousel-stack {
+    height: 280px !important;
+  }
+}
