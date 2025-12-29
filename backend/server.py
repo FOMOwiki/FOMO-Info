@@ -3793,21 +3793,21 @@ class CookieConsentSettings(BaseModel):
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     enabled: bool = True
-    privacy_policy_url: str = "/privacy"
-    terms_url: str = "/terms"
-    cookie_policy_url: str = "/cookies"
     title_en: str = "Cookie & Privacy Settings"
     description_en: str = "We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform."
+    cookie_policy_content: str = ""
+    privacy_policy_content: str = ""
+    terms_content: str = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class CookieConsentUpdate(BaseModel):
     enabled: Optional[bool] = None
-    privacy_policy_url: Optional[str] = None
-    terms_url: Optional[str] = None
-    cookie_policy_url: Optional[str] = None
     title_en: Optional[str] = None
     description_en: Optional[str] = None
+    cookie_policy_content: Optional[str] = None
+    privacy_policy_content: Optional[str] = None
+    terms_content: Optional[str] = None
 
 
 @api_router.get("/cookie-consent-settings")
