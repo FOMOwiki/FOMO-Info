@@ -3814,13 +3814,14 @@ class CookieConsentUpdate(BaseModel):
 async def get_cookie_consent_settings():
     """Get cookie consent settings"""
     collection = db.get_collection("cookie_consent_settings")
-    settings = await collection.find_one()
+    settings = await collection.find_one({}, {"_id": 0})
     
     if not settings:
         # Create default settings
         default_settings = CookieConsentSettings().model_dump()
         await collection.insert_one(default_settings)
-        return default_settings
+        # Re-fetch without _id
+        settings = await collection.find_one({}, {"_id": 0})
     
     return settings
 
@@ -3847,7 +3848,7 @@ async def update_cookie_consent_settings(
     collection = db.get_collection("cookie_consent_settings")
     
     # Get current settings
-    current = await collection.find_one()
+    current = await collection.find_one({}, {"_id": 0})
     if not current:
         current = CookieConsentSettings().model_dump()
         await collection.insert_one(current)
@@ -3864,7 +3865,7 @@ async def update_cookie_consent_settings(
     if result.modified_count == 0 and result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Settings not found")
     
-    updated = await collection.find_one({"id": current["id"]})
+    updated = await collection.find_one({"id": current["id"]}, {"_id": 0})
     return updated
 
 
