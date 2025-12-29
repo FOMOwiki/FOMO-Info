@@ -543,6 +543,12 @@
     overflow-x: hidden !important;
   }
   
+  /* Exception: Allow FAQ section to have horizontal scroll */
+  section.faq-section {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+  
   /* Hide ecosystem hint on mobile - it's intuitive without it */
   .drawer-hint-carousel {
     display: none !important;
