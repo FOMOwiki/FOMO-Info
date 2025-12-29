@@ -10,9 +10,7 @@ const CookieConsentSection = ({ showNotification }) => {
     terms_url: '/terms',
     cookie_policy_url: '/cookies',
     title_en: 'Cookie & Privacy Settings',
-    title_ru: 'Настройки Cookie и Конфиденциальности',
-    description_en: 'We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.',
-    description_ru: 'Мы ценим вашу конфиденциальность. Пожалуйста, примите наши cookies и политику конфиденциальности, чтобы продолжить использование платформы FOMO.'
+    description_en: 'We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.'
   });
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
