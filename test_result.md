@@ -60,3 +60,5 @@ agent_communication:
     message: "Starting Cookie Consent feature testing. Will verify English-only text, modal functionality, and admin panel configuration."
   - agent: "testing"
     message: "✅ TESTING COMPLETE: All Cookie Consent features working perfectly. CRITICAL REQUIREMENTS MET: 1) Banner shows ONLY English text (no Russian), 2) All policy modal links open with proper content, 3) Admin panel has NO Russian fields and all required tabs functional. Ready for production."
+  - agent: "testing"
+    message: "🔍 TESTING FAQ HORIZONTAL SCROLL: Found FAQ section with 8 items. CSS correctly configured for horizontal layout (display: flex, flex-direction: row, overflow-x: auto). Items visually arranged horizontally (Y diff = 0px, X diff = 296px). Content is scrollable (scrollWidth: 2384px > clientWidth: 343px). However, scroll functionality is not working properly - scroll position remains at 16px when attempting to scroll."
