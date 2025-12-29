@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111827;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981" />
+      <stop offset="100%" style="stop-color:#06B6D4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark Background -->
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  
+  <!-- Gradient Accent Line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  
+  <!-- Logo -->
+  <g transform="translate(80, 220)">
+    <rect width="80" height="80" rx="20" fill="url(#accent)"/>
+    <path d="M24 24h32v6h-26v10h22v6h-22v14h-6v-36zm40 12v26h-6v-20h-12v-6h18z" fill="white"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="190" y="260" font-family="Inter, -apple-system, sans-serif" font-size="64" font-weight="800" fill="white">FOMO</text>
+  
+  <!-- Tagline -->
+  <text x="190" y="310" font-family="Inter, sans-serif" font-size="28" fill="#9ca3af">The Future of Crypto Analytics</text>
+  
+  <!-- Features -->
+  <g transform="translate(80, 400)" fill="#6b7280" font-family="Inter, sans-serif" font-size="18">
+    <circle cx="8" cy="-6" r="4" fill="#10B981"/>
+    <text x="20">AI-Powered Insights</text>
+    
+    <circle cx="228" cy="-6" r="4" fill="#14B8A6"/>
+    <text x="240">Real-Time Data</text>
+    
+    <circle cx="418" cy="-6" r="4" fill="#06B6D4"/>
+    <text x="430">NFT Analytics</text>
+  </g>
+  
+  <!-- Stats on right -->
+  <g transform="translate(800, 180)">
+    <text font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="white">10K+</text>
+    <text y="30" font-family="Inter, sans-serif" font-size="16" fill="#6b7280">Active Users</text>
+  </g>
+  
+  <g transform="translate(800, 290)">
+    <text font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="white">$50M+</text>
+    <text y="30" font-family="Inter, sans-serif" font-size="16" fill="#6b7280">Trading Volume</text>
+  </g>
+  
+  <g transform="translate(800, 400)">
+    <text font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="white">666</text>
+    <text y="30" font-family="Inter, sans-serif" font-size="16" fill="#6b7280">NFT Collection</text>
+  </g>
+  
+  <!-- URL -->
+  <text x="1120" y="560" font-family="Inter, sans-serif" font-size="20" fill="#4b5563" text-anchor="end">fomo.io</text>
+</svg>
