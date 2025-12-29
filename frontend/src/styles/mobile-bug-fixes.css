@@ -477,6 +477,11 @@
   section {
     overflow-x: hidden !important;
   }
+  
+  /* Hide ecosystem hint on mobile - it's intuitive without it */
+  .drawer-hint-carousel {
+    display: none !important;
+  }
 }
 
 
