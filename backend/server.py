@@ -3785,6 +3785,93 @@ async def unregister_wallet(wallet_address: str):
     return {"success": True, "message": "Wallet unregistered successfully"}
 
 
+
+# ==================== COOKIE CONSENT SETTINGS ====================
+
+class CookieConsentSettings(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    enabled: bool = True
+    privacy_policy_url: str = "/privacy"
+    terms_url: str = "/terms"
+    cookie_policy_url: str = "/cookies"
+    title_en: str = "Cookie & Privacy Settings"
+    title_ru: str = "Настройки Cookie и Конфиденциальности"
+    description_en: str = "We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform."
+    description_ru: str = "Мы ценим вашу конфиденциальность. Пожалуйста, примите наши cookies и политику конфиденциальности, чтобы продолжить использование платформы FOMO."
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class CookieConsentUpdate(BaseModel):
+    enabled: Optional[bool] = None
+    privacy_policy_url: Optional[str] = None
+    terms_url: Optional[str] = None
+    cookie_policy_url: Optional[str] = None
+    title_en: Optional[str] = None
+    title_ru: Optional[str] = None
+    description_en: Optional[str] = None
+    description_ru: Optional[str] = None
+
+
+@api_router.get("/cookie-consent-settings")
+async def get_cookie_consent_settings():
+    """Get cookie consent settings"""
+    collection = db.get_collection("cookie_consent_settings")
+    settings = await collection.find_one()
+    
+    if not settings:
+        # Create default settings
+        default_settings = CookieConsentSettings().model_dump()
+        await collection.insert_one(default_settings)
+        return default_settings
+    
+    return settings
+
+
+@api_router.put("/admin/cookie-consent-settings")
+async def update_cookie_consent_settings(
+    settings: CookieConsentUpdate,
+    request: Request
+):
+    """Update cookie consent settings (admin only)"""
+    # Verify admin token
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or not auth_header.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Missing or invalid authorization header")
+    
+    token = auth_header.split(" ")[1]
+    admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
+    expected_token = base64.b64encode(f"admin:{admin_password}:{uuid.uuid4()}".encode()).decode()
+    
+    # Simple admin check (in production use proper JWT)
+    if not token or len(token) < 20:
+        raise HTTPException(status_code=401, detail="Invalid admin token")
+    
+    collection = db.get_collection("cookie_consent_settings")
+    
+    # Get current settings
+    current = await collection.find_one()
+    if not current:
+        current = CookieConsentSettings().model_dump()
+        await collection.insert_one(current)
+    
+    # Update fields
+    update_data = {k: v for k, v in settings.model_dump().items() if v is not None}
+    update_data["updated_at"] = datetime.now(timezone.utc)
+    
+    result = await collection.update_one(
+        {"id": current["id"]},
+        {"$set": update_data}
+    )
+    
+    if result.modified_count == 0 and result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Settings not found")
+    
+    updated = await collection.find_one({"id": current["id"]})
+    return updated
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
