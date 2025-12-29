@@ -137,16 +137,18 @@ python init_cookie_consent.py  # Cookie Consent с политиками
 ## 🌐 API Endpoints
 
 ```
-GET  /api/                    # Health check
-GET  /api/crypto-prices       # Цены BTC, ETH, ZK
-GET  /api/team-members        # Команда
-GET  /api/partners            # Партнёры
-GET  /api/faq                 # FAQ
-GET  /api/utilities           # Инструменты
-GET  /api/evolution-levels    # Уровни эволюции
-GET  /api/evolution-badges    # Бейджи
-GET  /api/utility-nav-buttons # Навигационные кнопки
-POST /api/admin/login         # Авторизация админа
+GET  /api/                         # Health check
+GET  /api/crypto-prices            # Цены BTC, ETH, ZK
+GET  /api/team-members             # Команда
+GET  /api/partners                 # Партнёры
+GET  /api/faq                      # FAQ
+GET  /api/utilities                # Инструменты
+GET  /api/evolution-levels         # Уровни эволюции
+GET  /api/evolution-badges         # Бейджи
+GET  /api/utility-nav-buttons      # Навигационные кнопки
+GET  /api/cookie-consent-settings  # Настройки Cookie Consent
+POST /api/admin/login              # Авторизация админа
+PUT  /api/admin/cookie-consent-settings  # Обновление Cookie Consent
 ```
 
 ## ⚠️ Важно
