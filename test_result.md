@@ -44,6 +44,21 @@ frontend:
         agent: "testing"
         comment: "✅ CRITICAL REQUIREMENT MET: Admin panel Cookie Consent section accessible with password 'admin123'. NO Russian language fields found - completely English only. All required tabs present: General Settings, Cookie Policy, Privacy Policy, Terms of Use. Each tab has proper textarea for content editing. Save Settings button functional."
 
+  - task: "FAQ Section Horizontal Scroll on Mobile"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/components/sections/FAQSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Testing FAQ section horizontal scroll on mobile viewport (375x800). Need to verify FAQ cards display in horizontal scrollable row, not 2-column grid or vertical stack."
+      - working: false
+        agent: "testing"
+        comment: "❌ PARTIAL IMPLEMENTATION: FAQ section found with 8 items. CSS correctly configured for horizontal layout (display: flex, flex-direction: row, overflow-x: auto). Items visually arranged horizontally (Y diff = 0px, X diff = 296px). Content is scrollable (scrollWidth: 2384px > clientWidth: 343px). However, scroll functionality is not working - scroll position remains at 16px when attempting to scroll. Mobile styles from mobile-bug-fixes.css are applied but scrolling mechanism is broken."
+
 metadata:
   created_by: "testing_agent"
   version: "1.0"
