@@ -95,38 +95,77 @@ python init_database.py
 python init_cookie_consent.py  # Cookie Consent с политиками
 ```
 
-## 🛠 Технологии
+## 🛠 Технології / Technologies
 
-| Компонент | Технология |
+| Компонент | Технологія |
 |-----------|------------|
 | Backend | FastAPI, Python 3.11 |
 | Frontend | React 18, TailwindCSS |
 | Database | MongoDB |
+| Wallet | Dynamic.xyz SDK |
+| Animations | Framer Motion |
 | UI Components | Shadcn/ui, Radix UI |
-| API | RESTful, CoinGecko |
 
-## 📁 Структура проекта
+## 📁 Структура проекту / Project Structure
 
 ```
 /app/
 ├── backend/
-│   ├── server.py          # FastAPI сервер
-│   ├── requirements.txt   # Python зависимости
-│   └── .env               # Конфигурация
+│   ├── server.py              # FastAPI сервер
+│   ├── requirements.txt       # Python залежності
+│   └── .env                   # Конфігурація
 ├── frontend/
 │   ├── src/
-│   │   ├── App.js         # Главный компонент
-│   │   ├── App.css        # Стили
-│   │   └── components/    # React компоненты
-│   ├── package.json       # NPM зависимости
-│   └── .env               # Конфигурация
+│   │   ├── App.js             # Головний компонент
+│   │   ├── App.css            # Стилі
+│   │   ├── components/
+│   │   │   ├── LoadingScreen.js        # Екран завантаження
+│   │   │   ├── CookieConsent.js        # Cookie банер
+│   │   │   ├── InviteModal.js          # Модалка гаманця
+│   │   │   └── admin/                  # Адмін компоненти
+│   │   └── styles/
+│   │       ├── mobile.css              # Базові мобільні стилі
+│   │       └── mobile-bug-fixes.css    # Фікси мобільних багів
+│   ├── package.json
+│   └── .env
 ├── scripts/
-│   ├── init_database.py   # Скрипт инициализации БД
-│   └── init_data/         # Дефолтные данные
-├── DEPLOYMENT.md          # Руководство по развертыванию
-├── CHANGELOG.md           # Журнал изменений
-└── README.md              # Этот файл
+│   ├── init_database.py           # Базова ініціалізація
+│   ├── init_full_database.py      # Повна ініціалізація з даними
+│   ├── init_cookie_consent.py     # Cookie Consent
+│   └── database_seed.json         # Seed дані
+├── CHANGELOG.md                   # Повна документація
+├── DEPLOYMENT_GUIDE.md            # Гайд по деплою
+└── README.md                      # Цей файл
 ```
+
+## 🆕 Нові функції v1.2 / New Features v1.2
+
+### 🎬 Loading Screen
+Анімований екран завантаження з космічною тематикою:
+- 🚀 Плаваюча ракета та елементи
+- 📊 Progress bar з відсотками
+- ⭕ Орбітальні кільця
+- Світла тема FOMO
+
+### 🍪 Cookie Consent
+Повна система згоди з cookies:
+- Банер з чекбоксами
+- Модальні вікна політик
+- Управління з адмін-панелі
+- Тексти: Cookie Policy, Privacy Policy, Terms of Use
+
+### 💼 Dynamic.xyz Wallet
+Підключення криптогаманців:
+- MetaMask, WalletConnect, Coinbase
+- Реєстрація з інвайт-кодом
+- Зв'язка з Twitter
+
+### 📱 Мобільна адаптивність
+20 виправлених багів + покращення:
+- Горизонтальний скролл FAQ, Team, Partners
+- Адаптивні розміри карточок
+- Touch targets 44px
+- Breakpoints: 320px, 375px, 768px
 
 ## 📚 Документация
 
