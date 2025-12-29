@@ -1,0 +1,1228 @@
+{
+  "team_members": [
+    {
+      "id": "627e3edc-9dec-4941-ae32-b3d5b5eff474",
+      "name_en": "Alex Thompson",
+      "position_en": "CEO & Founder",
+      "bio_en": "Visionary leader with 10+ years in fintech and blockchain. Previously led product teams at major crypto exchanges.",
+      "image_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/alexthompson",
+        "linkedin": "https://linkedin.com/in/alexthompson",
+        "telegram": null,
+        "instagram": null,
+        "tiktok": null,
+        "website": null
+      },
+      "displayed_socials": [
+        "twitter",
+        "linkedin"
+      ],
+      "member_type": "main",
+      "order": 1,
+      "created_at": "2025-12-29T07:26:14.854000",
+      "updated_at": "2025-12-29T07:26:14.854000"
+    },
+    {
+      "id": "d68aa525-9afa-47bb-ad40-ae1c3eaa80c0",
+      "name_en": "Sarah Chen",
+      "position_en": "CTO",
+      "bio_en": "Tech architect specializing in blockchain infrastructure. Former senior engineer at Ethereum Foundation.",
+      "image_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/sarahchen",
+        "linkedin": "https://linkedin.com/in/sarahchen",
+        "telegram": null,
+        "instagram": null,
+        "tiktok": null,
+        "website": null
+      },
+      "displayed_socials": [
+        "twitter",
+        "linkedin"
+      ],
+      "member_type": "main",
+      "order": 2,
+      "created_at": "2025-12-29T07:26:14.921000",
+      "updated_at": "2025-12-29T07:26:14.921000"
+    },
+    {
+      "id": "15668cf5-0ef1-44e7-98a7-98a416e4bdac",
+      "name_en": "Michael Roberts",
+      "position_en": "Head of Product",
+      "bio_en": "Product strategist with deep expertise in DeFi protocols. Built analytics tools used by 100K+ traders.",
+      "image_url": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/mroberts",
+        "linkedin": null,
+        "telegram": "https://t.me/mroberts",
+        "instagram": null,
+        "tiktok": null,
+        "website": null
+      },
+      "displayed_socials": [
+        "twitter",
+        "telegram"
+      ],
+      "member_type": "main",
+      "order": 3,
+      "created_at": "2025-12-29T07:26:14.964000",
+      "updated_at": "2025-12-29T07:26:14.964000"
+    },
+    {
+      "id": "aff7d527-d39f-43a3-9bcf-f74040330168",
+      "name_en": "Emma Wilson",
+      "position_en": "Lead Designer",
+      "bio_en": "Award-winning UI/UX designer. Created interfaces for top-tier fintech and Web3 applications.",
+      "image_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/emmawilson",
+        "linkedin": null,
+        "telegram": null,
+        "instagram": "https://instagram.com/emmawilson",
+        "tiktok": null,
+        "website": null
+      },
+      "displayed_socials": [
+        "twitter",
+        "instagram"
+      ],
+      "member_type": "main",
+      "order": 4,
+      "created_at": "2025-12-29T07:26:15.007000",
+      "updated_at": "2025-12-29T07:26:15.007000"
+    },
+    {
+      "id": "62915daf-8de4-406e-ad1a-fa84006c3e8c",
+      "name_en": "David Kim",
+      "position_en": "Head of Marketing",
+      "bio_en": "Growth hacker with track record of scaling crypto communities from 0 to 1M+ members.",
+      "image_url": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/davidkim",
+        "linkedin": "https://linkedin.com/in/davidkim",
+        "telegram": null,
+        "instagram": null,
+        "tiktok": null,
+        "website": null
+      },
+      "displayed_socials": [
+        "twitter",
+        "linkedin"
+      ],
+      "member_type": "team_member",
+      "order": 5,
+      "created_at": "2025-12-29T07:26:15.050000",
+      "updated_at": "2025-12-29T07:26:15.050000"
+    },
+    {
+      "id": "a88ee8ea-bdeb-4ebe-9f41-77ddc22c19d7",
+      "name_en": "Lisa Martinez",
+      "position_en": "Senior Blockchain Developer",
+      "bio_en": "Smart contract expert with contributions to major DeFi protocols. Solidity and Rust specialist.",
+      "image_url": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+      "social_links": {
+        "twitter": "https://twitter.com/lisamartinez",
+        "linkedin": null,
+        "telegram": null,
+        "instagram": null,
+        "tiktok": null,
+        "website": "https://lisamartinez.dev"
+      },
+      "displayed_socials": [
+        "twitter",
+        "website"
+      ],
+      "member_type": "team_member",
+      "order": 6,
+      "created_at": "2025-12-29T07:26:15.093000",
+      "updated_at": "2025-12-29T07:26:15.093000"
+    }
+  ],
+  "partners": [
+    {
+      "id": "17033e87-ed98-480d-a0a9-fc5e812eba35",
+      "name": "CoinGecko",
+      "description": "Leading cryptocurrency data aggregator providing real-time prices, market cap rankings, and trading volumes for thousands of digital assets.",
+      "image_url": "",
+      "link": "https://coingecko.com",
+      "category": "partners",
+      "order": 1,
+      "created_at": "2025-12-29T07:25:55.714133+00:00"
+    },
+    {
+      "id": "84360a65-3f9d-4ba3-af06-dfc58ab62fb0",
+      "name": "Binance",
+      "description": "World's largest cryptocurrency exchange by trading volume, offering a comprehensive trading platform for digital assets.",
+      "image_url": "",
+      "link": "https://binance.com",
+      "category": "partners",
+      "order": 2,
+      "created_at": "2025-12-29T07:25:55.714141+00:00"
+    },
+    {
+      "id": "09e5df0e-ccba-40de-a63d-3fb555244067",
+      "name": "Chainlink",
+      "description": "Decentralized oracle network that enables smart contracts to securely connect with external data sources and APIs.",
+      "image_url": "",
+      "link": "https://chain.link",
+      "category": "partners",
+      "order": 3,
+      "created_at": "2025-12-29T07:25:55.714143+00:00"
+    },
+    {
+      "id": "9883afb9-b919-4554-bf36-1a0c7f5a2b48",
+      "name": "CoinTelegraph",
+      "description": "Leading independent digital media resource covering blockchain technology, crypto assets and emerging fintech trends.",
+      "image_url": "",
+      "link": "https://cointelegraph.com",
+      "category": "media",
+      "order": 1,
+      "created_at": "2025-12-29T07:25:55.714144+00:00"
+    },
+    {
+      "id": "3396960e-dc84-4342-9769-17ab9bba5c4f",
+      "name": "The Block",
+      "description": "Research and news platform delivering institutional-grade analysis of digital asset markets and blockchain technology.",
+      "image_url": "",
+      "link": "https://theblock.co",
+      "category": "media",
+      "order": 2,
+      "created_at": "2025-12-29T07:25:55.714146+00:00"
+    },
+    {
+      "id": "09ef379f-b72a-4f64-b1b7-d01eb9666991",
+      "name": "DeFi Pulse",
+      "description": "Analytics platform tracking and measuring the growth of decentralized finance protocols across multiple blockchains.",
+      "image_url": "",
+      "link": "https://defipulse.com",
+      "category": "portfolio",
+      "order": 1,
+      "created_at": "2025-12-29T07:25:55.714147+00:00"
+    },
+    {
+      "id": "e3bac4f8-a20f-4001-b209-cdffa7ba5750",
+      "name": "Uniswap",
+      "description": "Leading decentralized exchange protocol enabling automated trading of DeFi tokens through liquidity pools.",
+      "image_url": "",
+      "link": "https://uniswap.org",
+      "category": "portfolio",
+      "order": 2,
+      "created_at": "2025-12-29T07:25:55.714150+00:00"
+    }
+  ],
+  "faq_items": [
+    {
+      "id": "b6cb4df7-0c4b-4285-ac11-54f7b27bf97e",
+      "question": "What is FOMO Platform?",
+      "answer": "FOMO is a comprehensive cryptocurrency analytics platform that combines real-time market data, AI-powered insights, social engagement tools, and seamless access to crypto projects, NFTs, and DeFi opportunities.",
+      "order": 1,
+      "created_at": "2025-12-29T07:26:15.180412+00:00"
+    },
+    {
+      "id": "ff5ac86b-f405-464b-a64c-5423b46b955c",
+      "question": "How do I get started with FOMO?",
+      "answer": "Simply connect your wallet, complete the registration with an invite code, and you will gain access to all platform features including the dashboard, analytics tools, and trading utilities.",
+      "order": 2,
+      "created_at": "2025-12-29T07:26:15.249241+00:00"
+    },
+    {
+      "id": "188c6194-08c6-4ccd-ad7c-4023a6120ad6",
+      "question": "What cryptocurrencies does FOMO track?",
+      "answer": "FOMO tracks over 16,000 cryptocurrencies including all major coins like Bitcoin, Ethereum, Solana, and emerging altcoins. We provide real-time prices, market cap data, trading volumes, and sentiment analysis.",
+      "order": 3,
+      "created_at": "2025-12-29T07:26:15.292465+00:00"
+    },
+    {
+      "id": "27594b45-e67a-48d9-9be3-65800d144b3e",
+      "question": "What is the Evolution system?",
+      "answer": "The Evolution system is our gamified user progression feature. As you engage with the platform, you earn FOMO points that unlock new levels and badges, providing exclusive benefits and recognition within the community.",
+      "order": 4,
+      "created_at": "2025-12-29T07:26:15.337342+00:00"
+    },
+    {
+      "id": "4700734c-22b5-44b3-a0e9-f9720983ffb9",
+      "question": "Is FOMO secure?",
+      "answer": "Yes, security is our top priority. We use industry-standard encryption, secure wallet connections, and never store your private keys. All transactions are protected with escrow services for OTC and P2P trades.",
+      "order": 5,
+      "created_at": "2025-12-29T07:26:15.381258+00:00"
+    },
+    {
+      "id": "26e0c0a8-6f0d-4a52-b666-233d42112cad",
+      "question": "How does the OTC Market work?",
+      "answer": "Our OTC (Over-The-Counter) market allows you to execute large trades with verified counterparties. Trades are secured with escrow protection, ensuring safe and private transactions for both buyers and sellers.",
+      "order": 6,
+      "created_at": "2025-12-29T07:26:15.425835+00:00"
+    },
+    {
+      "id": "da6be515-c737-4667-a8d9-6ae6a2fcf172",
+      "question": "What are Red Flag Alerts?",
+      "answer": "Red Flag Alerts are our AI-powered scam detection system. We analyze projects for suspicious patterns, rug pull indicators, and other risk factors to help you avoid potentially fraudulent investments.",
+      "order": 7,
+      "created_at": "2025-12-29T07:26:15.468009+00:00"
+    },
+    {
+      "id": "25461703-3cf9-4f1c-a552-8941556ab7b8",
+      "question": "How can I contact support?",
+      "answer": "You can reach our support team via email at support@fomo.io, through our Telegram community, or by using the in-app chat feature. We typically respond within 24 hours.",
+      "order": 8,
+      "created_at": "2025-12-29T07:26:15.510093+00:00"
+    }
+  ],
+  "evolution_levels": [
+    {
+      "id": "a17264c3-b3df-4b19-851a-330ec56b6384",
+      "rank": "Stellar Awakening",
+      "fomo_score_min": 0,
+      "fomo_score_max": 199,
+      "next_level": "Cosmic Explorer (200)",
+      "description": "You've taken your first steps into the FOMO universe.",
+      "animation_type": "stellar",
+      "gradient_from": "#64748b",
+      "gradient_to": "#475569",
+      "order": 0
+    },
+    {
+      "id": "775e8ca3-d6ea-4e38-b4c8-e445d00d3d2c",
+      "rank": "Cosmic Explorer",
+      "fomo_score_min": 200,
+      "fomo_score_max": 399,
+      "next_level": "Galactic Navigator (400)",
+      "description": "You're expanding your presence and exploring the ecosystem.",
+      "animation_type": "cosmic",
+      "gradient_from": "#3b82f6",
+      "gradient_to": "#2563eb",
+      "order": 1
+    },
+    {
+      "id": "9b3abd4b-d047-45e0-b18f-5c3817d01c42",
+      "rank": "Galactic Navigator",
+      "fomo_score_min": 400,
+      "fomo_score_max": 599,
+      "next_level": "Celestial Master (600)",
+      "description": "You're becoming a reliable contributor in the community.",
+      "animation_type": "galactic",
+      "gradient_from": "#a855f7",
+      "gradient_to": "#7c3aed",
+      "order": 2
+    },
+    {
+      "id": "56fbc526-6816-4075-8768-ff2b854687e2",
+      "rank": "Celestial Master",
+      "fomo_score_min": 600,
+      "fomo_score_max": 799,
+      "next_level": "Astral Sage (800)",
+      "description": "Your impact is felt across the galaxy. Others trust your moves.",
+      "animation_type": "celestial",
+      "gradient_from": "#f59e0b",
+      "gradient_to": "#d97706",
+      "order": 3
+    },
+    {
+      "id": "aa4cc3ea-2bb6-40b2-a678-ab9cb5251311",
+      "rank": "Astral Sage",
+      "fomo_score_min": 800,
+      "fomo_score_max": 899,
+      "next_level": "Universal Enlightenment (900)",
+      "description": "You are now a recognized guide in the FOMO cosmos.",
+      "animation_type": "astral",
+      "gradient_from": "#ec4899",
+      "gradient_to": "#db2777",
+      "order": 4
+    },
+    {
+      "id": "7cfd862e-6681-4209-9e08-7f8294936134",
+      "rank": "Universal Enlightenment",
+      "fomo_score_min": 900,
+      "fomo_score_max": 1000,
+      "next_level": "Max level achieved!",
+      "description": "You've reached the ultimate level. A symbol of cosmic influence.",
+      "animation_type": "universal",
+      "gradient_from": "#10b981",
+      "gradient_to": "#059669",
+      "order": 5
+    }
+  ],
+  "evolution_badges": [
+    {
+      "id": "9a74fc3d-48b3-4528-ac5a-c02f589a921f",
+      "name": "XP Pioneer",
+      "icon": "⭐",
+      "xp_requirement": 1000,
+      "condition": "staying active: predictions, OTC/P2P deals, insights, and community contributions",
+      "description": "You were among the first to shape the platform — your journey began early and boldly",
+      "animation_type": "pioneer",
+      "gradient_from": "#3b82f6",
+      "gradient_to": "#06b6d4",
+      "order": 0
+    },
+    {
+      "id": "8c3986f1-0def-403b-8a59-66eba83b0d7e",
+      "name": "Onboarding Master",
+      "icon": "🎯",
+      "xp_requirement": 2500,
+      "condition": "complete all onboarding steps: profile, wallet, watchlist, and alerts",
+      "description": "Your setup is flawless — profile, wallet, alerts, and watchlist are all on point",
+      "animation_type": "onboarding",
+      "gradient_from": "#f59e0b",
+      "gradient_to": "#d97706",
+      "order": 1
+    },
+    {
+      "id": "b25677e6-959d-4508-a4a7-eb254d46123c",
+      "name": "Project Reviewer",
+      "icon": "🔍",
+      "xp_requirement": 5000,
+      "condition": "publishing 3+ in-depth crypto project reports",
+      "description": "You're making waves in crypto research — your deep-dive reports help others",
+      "animation_type": "reviewer",
+      "gradient_from": "#a855f7",
+      "gradient_to": "#7c3aed",
+      "order": 2
+    },
+    {
+      "id": "274a429f-228f-4a77-a506-e76f42d8509d",
+      "name": "Top Predictor",
+      "icon": "🎖️",
+      "xp_requirement": 10000,
+      "condition": "maintain ≥80% accuracy across ≥100 predictions",
+      "description": "Accuracy is your superpower — with over 80% precision, you're a true market sniper",
+      "animation_type": "predictor",
+      "gradient_from": "#ef4444",
+      "gradient_to": "#dc2626",
+      "order": 3
+    },
+    {
+      "id": "a1db6e5d-f740-4e36-8ee8-d46d72bf77f3",
+      "name": "Hot Streak",
+      "icon": "🔥",
+      "xp_requirement": 15000,
+      "condition": "hit a streak of ≥5 consecutive winning predictions",
+      "description": "You're on fire! A streak of winning predictions proves you know how to ride the momentum",
+      "animation_type": "streak",
+      "gradient_from": "#f97316",
+      "gradient_to": "#ea580c",
+      "order": 4
+    },
+    {
+      "id": "cdb071f1-0999-43da-a836-9d3931188285",
+      "name": "Market Maker",
+      "icon": "💎",
+      "xp_requirement": 20000,
+      "condition": "complete OTC trades totaling ≥50,000 USDT",
+      "description": "You've moved serious volume in OTC trades — your presence matters in the big league",
+      "animation_type": "maker",
+      "gradient_from": "#10b981",
+      "gradient_to": "#059669",
+      "order": 5
+    },
+    {
+      "id": "86fcc36c-93ff-4ed9-8484-67d0365bb44b",
+      "name": "P2P Pro",
+      "icon": "🤝",
+      "xp_requirement": 25000,
+      "condition": "complete P2P trades totaling ≥50,000 USDT",
+      "description": "Your P2P game is elite — trusted, active, and consistently closing big deals",
+      "animation_type": "p2p",
+      "gradient_from": "#6366f1",
+      "gradient_to": "#4f46e5",
+      "order": 6
+    },
+    {
+      "id": "719b6dd4-aab2-49a5-897a-c0b27be43a9d",
+      "name": "Community Star",
+      "icon": "⚡",
+      "xp_requirement": 35000,
+      "condition": "through 20+ comments/discussions and earn ≥100 likes",
+      "description": "The crowd listens when you speak — your contributions have earned trust and applause",
+      "animation_type": "community",
+      "gradient_from": "#ec4899",
+      "gradient_to": "#db2777",
+      "order": 7
+    },
+    {
+      "id": "2fd2a039-cd89-4350-9d7c-89b8f02b32f5",
+      "name": "Singularity",
+      "icon": "👑",
+      "xp_requirement": 100000,
+      "condition": "unlock all 8 previous badges — singularity=true will be permanently linked to your NFT",
+      "description": "You're one of a kind. All badges unlocked. The singularity=true tag is now forever part of your legacy",
+      "animation_type": "singularity",
+      "gradient_from": "#14b8a6",
+      "gradient_to": "#0d9488",
+      "order": 8
+    }
+  ],
+  "utility_nav_buttons": [
+    {
+      "id": "d6c2af98-a71c-46e7-9454-d6cbd14107c5",
+      "label": "Crypto",
+      "url": "https://www.fomo.cx/",
+      "order": 1,
+      "created_at": "2025-12-29T07:26:15.970107+00:00"
+    },
+    {
+      "id": "cc775e68-7197-42ce-a64a-06c5da52dba8",
+      "label": "Core",
+      "url": "https://www.fomo.cx/",
+      "order": 2,
+      "created_at": "2025-12-29T07:26:16.035405+00:00"
+    },
+    {
+      "id": "65810d3b-e497-4c40-9913-2b42efaddc08",
+      "label": "Utility",
+      "url": "https://www.fomo.cx/",
+      "order": 3,
+      "created_at": "2025-12-29T07:26:16.078398+00:00"
+    }
+  ],
+  "cookie_consent_settings": [
+    {
+      "id": "0bacbe3f-145a-4c4a-9bdd-59ec0808cce2",
+      "enabled": true,
+      "title_en": "Cookie & Privacy Settings",
+      "description_en": "We value your privacy. Please accept our cookies and privacy policy to continue exploring the FOMO platform.",
+      "cookie_policy_content": "COOKIE POLICY\n\nEffective Date: March 15, 2025\n\n1. WHAT ARE COOKIES?\n\nCookies are small text files placed on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and enabling certain features.\n\n2. TYPES OF COOKIES WE USE\n\nEssential Cookies\nThese cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility.\n• Authentication cookies (keeping you logged in)\n• Security cookies (protecting against fraud)\n• Session cookies (maintaining your browsing session)\n\nAnalytics Cookies\nThese cookies collect data about your interactions with the site (e.g., number of visitors, behavior on specific pages). We use this information to improve the interface, identify and fix bugs, and determine the popularity of different FOMO sections.\n\nAdvertising Cookies\nThese are used to display advertisements that are more relevant to you and to measure their effectiveness. They may track whether you have viewed a particular ad and how you interacted with it.\n\n3. MANAGING COOKIES\n\nBrowser Settings\nMost browsers are set to automatically accept cookies. However, you can adjust your browser settings to block or delete cookies. Keep in mind that some features of FOMO may not function properly if you disable cookies entirely.\n\nThird-Party Services\nWe may integrate third-party tools (such as Google Analytics, Facebook Pixel), which also use their own cookies or similar technologies to analyze traffic or deliver targeted ads. Each of these services has its own privacy policy.\n\n4. DO NOT TRACK (DNT) SIGNALS\n\nFOMO currently does not support the DNT protocol. This means that if your browser sends a \"Do Not Track\" signal, we cannot guarantee that data collection will be stopped.\n\nAlternative Options: If you wish to minimize tracking, you may:\n• Disable cookies in your browser settings\n• Use browser extensions that block tracking scripts (e.g., Privacy Badger, uBlock Origin)\n• Regularly clear your browser history and cookies\n\n5. CONTACT US\n\nIf you have questions about our cookie practices, please contact us at the information provided on our website.\n\n© FOMO, 2025",
+      "privacy_policy_content": "PRIVACY POLICY\n\nEffective Date: March 15, 2025\n\n1. INTRODUCTION\n\nWelcome to FOMO. We respect and value your privacy and are committed to protecting any personal information you provide to us or that we collect through your interaction with the platform.\n\nThis Policy applies to all individuals and entities interacting with FOMO, including registered users, unregistered visitors, partners, sponsors, and advertisers.\n\n2. WHAT INFORMATION WE COLLECT\n\nPersonal Information You Provide Directly\n• Account Registration: When creating an account, we may request your full name, username, email address, and password.\n• User-Generated Content: You may add new crypto projects, update existing ones, leave reviews, post comments, or participate in community spaces.\n• Communication Records: Emails, live chats, or other types of communication with our support team.\n\nAutomatically Collected Data\n• Device Information: IP address, device type, browser type, operating system, time zone settings.\n• Usage Information: Pages visited, link clicks, time spent on specific sections, referral URLs.\n• Geolocation Data: Approximate location determined using your IP address.\n\n3. HOW WE USE YOUR INFORMATION\n\n• To ensure proper authentication and account management\n• To communicate with you regarding updates or service-related messages\n• To provide access to personalized content\n• To build a dynamic database of crypto projects\n• To improve user experience based on behavioral patterns\n• To prevent fraudulent activity\n\n4. DATA STORAGE AND SECURITY\n\nWe retain your information only for as long as it is necessary to fulfill the purposes outlined in this Policy.\n\nSecurity Measures:\n• Encryption: We use secure protocols (HTTPS) to transmit data\n• Access control: Personal data is accessible only to authorized personnel\n• Auditing and testing: We regularly assess the security of our infrastructure\n\n5. YOUR RIGHTS AND CHOICES\n\n• Access and Correction: Request a copy of your personal data or update it\n• Deletion and Restriction: Request deletion or restrict processing of your data\n• Opt-Out from Marketing: Unsubscribe from promotional emails at any time\n• Data Portability: Request your data in a machine-readable format\n\n6. COOKIES\n\nWe use cookies and similar technologies. Please see our Cookie Policy for more details.\n\n7. CHANGES TO THIS POLICY\n\nWe may update this Privacy Policy from time to time. If changes are significant, we will notify you through the website or email.\n\n8. CONTACT US\n\nIf you have questions about this Privacy Policy, please contact us through the information provided on our website.\n\n© FOMO, 2025",
+      "terms_content": "TERMS OF USE\n\nEffective Date: March 15, 2025\n\n1. INTRODUCTION\n\nWelcome to FOMO (\"Site\", \"we\", \"our\"). These Terms of Use (\"Terms\") constitute a legal agreement between you (\"you\", \"user\") and FOMO. Please read these Terms carefully.\n\n2. DEFINITIONS\n\n• FOMO: An online platform providing information about cryptocurrency projects, funds, investors, and related content.\n• User: Any natural person or legal entity accessing or interacting with the Site.\n• Content: All information published or accessible on the Site.\n• Services: All functionalities provided by FOMO.\n\n3. ACCEPTANCE OF TERMS\n\nBy using FOMO and its services, you confirm that you have read these Terms and agree to comply with them. If you disagree with any part of these Terms, immediately stop using the site.\n\n4. USE OF THE SITE\n\nAvailable Features:\n• Browsing and searching for crypto projects\n• Adding your own projects\n• Rating or commenting on existing projects\n• Viewing fund and person profiles\n• Analytics tools and statistics\n\nAge Restrictions:\nMost sections of FOMO are intended for individuals who have reached the age of majority in their jurisdiction (typically 18 years old).\n\n5. USER RESPONSIBILITIES\n\n• Providing accurate and up-to-date information\n• Respect for intellectual property rights\n• Compliance with legal standards and avoidance of fraudulent activities\n\n6. REGISTRATION AND ACCOUNT\n\n• You are responsible for keeping your password secure\n• All actions performed under your login are deemed to have been carried out by you\n• FOMO reserves the right to suspend or delete your account if you violate these Terms\n\n7. USER CONTENT SUBMISSION\n\nBy submitting content to FOMO, you grant the platform a non-exclusive, royalty-free, worldwide license to use, reproduce, distribute, and publicly display your material.\n\n8. DISCLAIMER\n\nThe content published on FOMO is for informational purposes only and does not constitute legal, financial, or investment advice. Cryptocurrencies are high-risk assets. FOMO shall not be liable for any losses arising from the use of information provided on the site.\n\n9. LIMITATION OF LIABILITY\n\nFOMO is not responsible for:\n• Losses from cryptocurrency investments\n• Technical errors or downtime\n• User-generated content accuracy\n• Third-party websites linked from our platform\n• Hacking attacks or security breaches\n\n10. CHANGES TO TERMS\n\nFOMO reserves the right to modify these Terms at any time. Continued use constitutes acceptance of updated Terms.\n\n11. GOVERNING LAW\n\nThese Terms are governed by the laws of the European Union.\n\n12. CONTACT US\n\nIf you have questions about these Terms, please contact us through the information provided on our website.\n\n© FOMO, 2025",
+      "created_at": "2025-12-29T10:19:28.318000",
+      "updated_at": "2025-12-29T11:20:15.286000"
+    }
+  ],
+  "hero_settings": [
+    {
+      "id": "hero_settings",
+      "badge": "Now in Beta v1.1",
+      "title_line1": "The Future of",
+      "title_line2": "Crypto Analytics",
+      "subtitle": "Discover a comprehensive platform combining social engagement, data analytics, and seamless access to crypto projects, NFTs, and more.",
+      "action_buttons": [
+        {
+          "text": "Launch App",
+          "link": "#",
+          "primary": true,
+          "use_invite_modal": true
+        },
+        {
+          "text": "Learn More",
+          "link": "#about",
+          "primary": false,
+          "use_invite_modal": false
+        }
+      ],
+      "stats": [
+        {
+          "value": "10K+",
+          "label_ru": "Активных пользователей",
+          "label_en": "Active Users"
+        },
+        {
+          "value": "$50M+",
+          "label_ru": "Объём торгов",
+          "label_en": "Trading Volume"
+        },
+        {
+          "value": "666",
+          "label_ru": "NFT Коллекция",
+          "label_en": "NFT Collection"
+        }
+      ],
+      "nft_settings": {
+        "price_per_box": 150.0,
+        "discount_threshold": 3,
+        "discount_percent": 10,
+        "total_supply": 666,
+        "max_per_wallet": 100
+      },
+      "updated_at": "2025-12-29T08:21:58.081360+00:00"
+    }
+  ],
+  "about_settings": [
+    {
+      "id": "about_settings",
+      "badge": "About Us",
+      "title": "What is",
+      "title_highlight": "FOMO",
+      "subtitle": "A cutting-edge platform reshaping how users interact with the crypto world",
+      "description": "FOMO is a cutting-edge platform built to reshape the way users interact with the cryptoworld. Our goal is to create a single, comprehensive ecosystem that combines",
+      "social_engagement": "social engagement",
+      "data_analytics": "data analytics",
+      "seamless_access": "seamless access",
+      "description_end": "to crypto projects, NFTs, funds, and more.",
+      "features": [
+        {
+          "icon": "diamond",
+          "title": "Community-Driven",
+          "description": "Every user influences the project through voting and social engagement.",
+          "color": "emerald"
+        },
+        {
+          "icon": "clock",
+          "title": "24/7 Support",
+          "description": "Our support never stops. We are here offering guidance every step.",
+          "color": "teal"
+        },
+        {
+          "icon": "lightning",
+          "title": "Fast & Efficient",
+          "description": "Launch your project quickly with FOMO tools and support.",
+          "color": "cyan"
+        },
+        {
+          "icon": "shield",
+          "title": "Secure & Reliable",
+          "description": "All transactions via secure smart contracts for max protection.",
+          "color": "violet"
+        }
+      ],
+      "whitepaper_button_text": "Whitepaper",
+      "whitepaper_button_link": "#",
+      "updated_at": "2025-12-29T07:25:55.711000"
+    }
+  ],
+  "footer_settings": [
+    {
+      "id": "footer_settings",
+      "company_name": "FOMO",
+      "company_description": "Leading cryptocurrency analytics platform",
+      "company_address": "4 World Trade Center\n150 Greenwich St Floor 45\nNew York, NY 10007",
+      "company_phone": "(646) 845-0036",
+      "company_email": "info@fomo.io",
+      "social_media": [
+        {
+          "platform": "github",
+          "url": "https://github.com",
+          "icon": null
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://linkedin.com",
+          "icon": null
+        },
+        {
+          "platform": "youtube",
+          "url": "https://youtube.com",
+          "icon": null
+        }
+      ],
+      "navigation_sections": [
+        {
+          "title": "COMPANY",
+          "links": [
+            {
+              "name": "About",
+              "url": "#about",
+              "order": 1
+            },
+            {
+              "name": "Team",
+              "url": "#team",
+              "order": 2
+            }
+          ],
+          "order": 1
+        },
+        {
+          "title": "PLATFORM",
+          "links": [
+            {
+              "name": "Projects",
+              "url": "#projects",
+              "order": 1
+            },
+            {
+              "name": "Roadmap",
+              "url": "#roadmap",
+              "order": 2
+            },
+            {
+              "name": "Partners",
+              "url": "#partners",
+              "order": 3
+            }
+          ],
+          "order": 2
+        },
+        {
+          "title": "OTHER",
+          "links": [
+            {
+              "name": "Documentation",
+              "url": "#",
+              "order": 1
+            },
+            {
+              "name": "Support",
+              "url": "#",
+              "order": 2
+            }
+          ],
+          "order": 3
+        }
+      ],
+      "cta_button_text": "Launch Platform →",
+      "cta_button_url": "#",
+      "legal_pages": [
+        {
+          "id": "privacy",
+          "title": "Privacy Policy",
+          "content": "Privacy policy content will be displayed here."
+        },
+        {
+          "id": "terms",
+          "title": "Terms of Service",
+          "content": "Terms of service content will be displayed here."
+        },
+        {
+          "id": "disclaimer",
+          "title": "Disclaimer",
+          "content": "Disclaimer content will be displayed here."
+        }
+      ],
+      "copyright_text": "Copyright © 2025 FOMO. All rights reserved.",
+      "legal_disclaimer": "Products and services are offered by FOMO as a crypto analytics platform. All trading and investment decisions are the sole responsibility of the user.",
+      "made_by_text": "Made by Emergent",
+      "made_by_url": "https://emergent.sh",
+      "updated_at": "2025-12-29T07:25:55.708177+00:00"
+    }
+  ],
+  "platform_settings": [
+    {
+      "id": "platform_settings",
+      "community": {
+        "value": "45,658",
+        "label_ru": "Участников сообщества",
+        "label_en": "Community Members",
+        "change": "+12%",
+        "trend": [
+          50,
+          55,
+          52,
+          60,
+          58,
+          65,
+          62,
+          70,
+          68,
+          75,
+          72,
+          80
+        ]
+      },
+      "visits": {
+        "value": "1.2M",
+        "label_ru": "Посещений в месяц",
+        "label_en": "Monthly Visits",
+        "change": "+18%",
+        "trend": [
+          50,
+          55,
+          52,
+          60,
+          58,
+          65,
+          62,
+          70,
+          68,
+          75,
+          72,
+          80
+        ]
+      },
+      "projects": {
+        "value": "16,670",
+        "label_ru": "Отслеживаемых проектов",
+        "label_en": "Tracked Projects",
+        "change": "+8%",
+        "trend": [
+          50,
+          55,
+          52,
+          60,
+          58,
+          65,
+          62,
+          70,
+          68,
+          75,
+          72,
+          80
+        ]
+      },
+      "alerts": {
+        "value": "892",
+        "label_ru": "Красных флагов",
+        "label_en": "Red Flag Alerts",
+        "change": "-15%",
+        "trend": [
+          50,
+          55,
+          52,
+          60,
+          58,
+          65,
+          62,
+          70,
+          68,
+          75,
+          72,
+          80
+        ]
+      },
+      "service_modules": [
+        {
+          "icon": "📊",
+          "name_ru": "Дашборд",
+          "name_en": "Dashboard",
+          "count": "2,847",
+          "label_ru": "активных пользователей",
+          "label_en": "active users",
+          "color": "emerald"
+        },
+        {
+          "icon": "💱",
+          "name_ru": "OTC Маркет",
+          "name_en": "OTC Market",
+          "count": "$50M+",
+          "label_ru": "объём",
+          "label_en": "volume",
+          "color": "blue"
+        },
+        {
+          "icon": "🔄",
+          "name_ru": "P2P Обмен",
+          "name_en": "P2P Exchange",
+          "count": "1,245",
+          "label_ru": "сделок/день",
+          "label_en": "trades/day",
+          "color": "purple"
+        },
+        {
+          "icon": "🎯",
+          "name_ru": "Прогнозы",
+          "name_en": "Predictions",
+          "count": "78%",
+          "label_ru": "точность",
+          "label_en": "accuracy",
+          "color": "orange"
+        },
+        {
+          "icon": "🔍",
+          "name_ru": "Парсинг",
+          "name_en": "Parsing",
+          "count": "16K+",
+          "label_ru": "токенов",
+          "label_en": "tokens",
+          "color": "pink"
+        },
+        {
+          "icon": "📈",
+          "name_ru": "Сентимент",
+          "name_en": "Sentiment",
+          "count": "24/7",
+          "label_ru": "мониторинг",
+          "label_en": "monitoring",
+          "color": "cyan"
+        },
+        {
+          "icon": "🚀",
+          "name_ru": "EarlyLand",
+          "name_en": "EarlyLand",
+          "count": "340+",
+          "label_ru": "проектов",
+          "label_en": "projects",
+          "color": "green"
+        },
+        {
+          "icon": "🖼️",
+          "name_ru": "NFT Стратегия",
+          "name_en": "NFT Strategy",
+          "count": "89",
+          "label_ru": "коллекций",
+          "label_en": "collections",
+          "color": "violet"
+        }
+      ],
+      "services_list": [
+        {
+          "num": "01",
+          "title_ru": "OTC & P2P РЫНКИ",
+          "title_en": "OTC & P2P MARKETS",
+          "description_ru": "Безопасная внебиржевая торговля и P2P-обмен криптоактивами с защитой эскроу и верифицированными контрагентами.",
+          "description_en": "Secure over-the-counter trading and peer-to-peer exchange for crypto assets with escrow protection and verified counterparties."
+        },
+        {
+          "num": "02",
+          "title_ru": "РАННИЙ ДОСТУП",
+          "title_en": "EARLY LAND ACCESS",
+          "description_ru": "Получите ранний доступ к перспективным проектам, участвуйте в airdrop'ах и максимизируйте свой заработок до публичных запусков.",
+          "description_en": "Get early access to promising projects, participate in airdrops, and maximize your earning potential before public launches."
+        },
+        {
+          "num": "03",
+          "title_ru": "АНАЛИТИКА И СЕНТИМЕНТ",
+          "title_en": "ANALYTICS & SENTIMENT",
+          "description_ru": "Продвинутый парсинг, анализ настроений и обнаружение красных флагов для выявления скамов и принятия обоснованных инвестиционных решений.",
+          "description_en": "Advanced parsing, sentiment analysis, and red flag detection to identify scams and make informed investment decisions."
+        }
+      ],
+      "bottom_stats": [
+        {
+          "value": "70%",
+          "label_ru": "АВТОМАТИЗАЦИЯ АНАЛИЗА",
+          "label_en": "ANALYSIS AUTOMATED",
+          "description_ru": "AI-инсайты за секунды",
+          "description_en": "AI-powered insights in seconds"
+        },
+        {
+          "value": "24/7",
+          "label_ru": "ОХВАТ РЫНКА",
+          "label_en": "MARKET COVERAGE",
+          "description_ru": "Мониторинг в реальном времени",
+          "description_en": "Real-time monitoring"
+        },
+        {
+          "value": "$50M+",
+          "label_ru": "ОБЪЁМ ТОРГОВ",
+          "label_en": "TRADING VOLUME",
+          "description_ru": "На всех рынках",
+          "description_en": "Across all markets"
+        }
+      ],
+      "section_badge_ru": "ВНУТРИ ПЛАТФОРМЫ",
+      "section_badge_en": "INSIDE THE PLATFORM",
+      "section_title_ru": "Командный центр для вашего крипто-путешествия",
+      "section_title_en": "A command center for your crypto journey",
+      "section_intro_ru": "Следите за каждым движением рынка, отслеживайте проекты, управляйте портфелем и получайте доступ к эксклюзивным возможностям в одном месте.",
+      "section_intro_en": "See every market move, track projects, manage your portfolio, and access exclusive opportunities in one place. FOMO connects all your crypto activities so you stay ahead of the curve.",
+      "updated_at": "2025-12-29T07:25:55.710112+00:00"
+    }
+  ],
+  "community_settings": [
+    {
+      "id": "community_settings",
+      "title_ru": "Присоединяйся к сообществу",
+      "title_en": "Join the Community",
+      "description_ru": "Общайтесь с web3 основателями, разработчиками и крипто-энтузиастами со всего мира.",
+      "description_en": "Connect with web3 founders, developers, and crypto enthusiasts from around the world.",
+      "socials": [
+        {
+          "platform": "twitter",
+          "url": "https://twitter.com",
+          "enabled": true
+        },
+        {
+          "platform": "telegram",
+          "url": "https://t.me",
+          "enabled": true
+        },
+        {
+          "platform": "discord",
+          "url": "https://discord.com",
+          "enabled": true
+        }
+      ],
+      "subscribe_enabled": true,
+      "subscribe_title_ru": "Будь в курсе",
+      "subscribe_title_en": "Stay Updated",
+      "updated_at": "2025-12-29T07:25:55.710810+00:00"
+    }
+  ],
+  "roadmap_settings": [
+    {
+      "id": "roadmap_settings",
+      "section_badge_ru": "Наш Прогресс",
+      "section_badge_en": "Our Progress",
+      "section_title_ru": "Дорожная карта проекта",
+      "section_title_en": "Project Roadmap",
+      "section_subtitle_ru": "Отслеживайте наш прогресс разработки в реальном времени",
+      "section_subtitle_en": "Track our development progress in real-time",
+      "tasks": [],
+      "updated_at": "2025-12-29T07:25:55.708000+00:00"
+    }
+  ],
+  "utilities": [
+    {
+      "id": "0cb08f59-7395-4dde-8dbd-0d496cab879a",
+      "title": "Portfolio Tracker",
+      "subtitle": "Real-time asset management",
+      "icon_type": "chart",
+      "custom_icon_url": null,
+      "short_description_ru": "Отслеживайте все свои криптоактивы в одном месте",
+      "short_description_en": "Track all your crypto assets in one place",
+      "full_description_ru": "Полный обзор вашего портфеля с автоматическим расчётом прибыли и убытков",
+      "full_description_en": "Complete portfolio overview with automatic profit/loss calculations",
+      "features": [
+        {
+          "ru": "Автосинхронизация кошельков",
+          "en": "Auto-sync wallets"
+        },
+        {
+          "ru": "Детальная аналитика",
+          "en": "Detailed analytics"
+        }
+      ],
+      "stats": [
+        {
+          "value": "50K+",
+          "label_ru": "Пользователей",
+          "label_en": "Users"
+        },
+        {
+          "value": "$2B+",
+          "label_ru": "Активов отслежено",
+          "label_en": "Assets Tracked"
+        }
+      ],
+      "gradient": "from-emerald-500 to-teal-500",
+      "bg_gradient": "from-emerald-50 to-teal-50",
+      "button_gradient": "from-emerald-500 to-teal-500",
+      "button_text_ru": "Попробовать",
+      "button_text_en": "Try Now",
+      "button_link": "#portfolio",
+      "order": 1,
+      "is_active": true,
+      "created_at": "2025-12-29T07:26:15.642000",
+      "updated_at": "2025-12-29T07:26:15.642000"
+    },
+    {
+      "id": "dbf77e34-32da-4c20-8396-a2edd81791e7",
+      "title": "Price Alerts",
+      "subtitle": "Never miss a trade",
+      "icon_type": "lightning",
+      "custom_icon_url": null,
+      "short_description_ru": "Мгновенные уведомления о ценах",
+      "short_description_en": "Instant price notifications",
+      "full_description_ru": "Настраивайте уведомления для любого актива и получайте их в Telegram",
+      "full_description_en": "Set up alerts for any asset and receive them via Telegram",
+      "features": [
+        {
+          "ru": "Telegram бот 24/7",
+          "en": "24/7 Telegram Bot"
+        },
+        {
+          "ru": "Гибкие настройки",
+          "en": "Flexible settings"
+        }
+      ],
+      "stats": [
+        {
+          "value": "10M+",
+          "label_ru": "Уведомлений",
+          "label_en": "Alerts Sent"
+        },
+        {
+          "value": "99.9%",
+          "label_ru": "Точность",
+          "label_en": "Accuracy"
+        }
+      ],
+      "gradient": "from-blue-500 to-indigo-500",
+      "bg_gradient": "from-emerald-50 to-teal-50",
+      "button_gradient": "from-emerald-500 to-teal-500",
+      "button_text_ru": "Настроить",
+      "button_text_en": "Set Alert",
+      "button_link": "#alerts",
+      "order": 2,
+      "is_active": true,
+      "created_at": "2025-12-29T07:26:15.707000",
+      "updated_at": "2025-12-29T07:26:15.707000"
+    },
+    {
+      "id": "d1ef4547-ea0f-437e-80a1-b9de08aa1eef",
+      "title": "Whale Tracker",
+      "subtitle": "Follow the smart money",
+      "icon_type": "users",
+      "custom_icon_url": null,
+      "short_description_ru": "Отслеживайте крупные транзакции китов",
+      "short_description_en": "Track large whale transactions",
+      "full_description_ru": "Мониторинг крупных кошельков и их активности в реальном времени",
+      "full_description_en": "Real-time monitoring of large wallets and their activity",
+      "features": [
+        {
+          "ru": "Обновление в реальном времени",
+          "en": "Real-time updates"
+        },
+        {
+          "ru": "Фильтры по сумме и токену",
+          "en": "Filter by amount and token"
+        }
+      ],
+      "stats": [
+        {
+          "value": "100K+",
+          "label_ru": "Кошельков",
+          "label_en": "Wallets Tracked"
+        },
+        {
+          "value": "5K+",
+          "label_ru": "Алертов в день",
+          "label_en": "Daily Alerts"
+        }
+      ],
+      "gradient": "from-purple-500 to-pink-500",
+      "bg_gradient": "from-emerald-50 to-teal-50",
+      "button_gradient": "from-emerald-500 to-teal-500",
+      "button_text_ru": "Следить",
+      "button_text_en": "Track Whales",
+      "button_link": "#whales",
+      "order": 3,
+      "is_active": true,
+      "created_at": "2025-12-29T07:26:15.750000",
+      "updated_at": "2025-12-29T07:26:15.750000"
+    },
+    {
+      "id": "1726981e-07fc-4026-ae17-8bcf14274a80",
+      "title": "NFT Scanner",
+      "subtitle": "Discover rare opportunities",
+      "icon_type": "chart",
+      "custom_icon_url": null,
+      "short_description_ru": "Анализ NFT коллекций и редкости",
+      "short_description_en": "NFT collection analysis and rarity",
+      "full_description_ru": "Находите недооценённые NFT и следите за трендами рынка",
+      "full_description_en": "Find undervalued NFTs and track market trends",
+      "features": [
+        {
+          "ru": "Рейтинг редкости",
+          "en": "Rarity Rating"
+        },
+        {
+          "ru": "Трендовые коллекции",
+          "en": "Trending collections"
+        }
+      ],
+      "stats": [
+        {
+          "value": "10K+",
+          "label_ru": "Коллекций",
+          "label_en": "Collections"
+        },
+        {
+          "value": "50M+",
+          "label_ru": "NFT проанализировано",
+          "label_en": "NFTs Analyzed"
+        }
+      ],
+      "gradient": "from-orange-500 to-red-500",
+      "bg_gradient": "from-emerald-50 to-teal-50",
+      "button_gradient": "from-emerald-500 to-teal-500",
+      "button_text_ru": "Сканировать",
+      "button_text_en": "Scan NFTs",
+      "button_link": "#nft",
+      "order": 4,
+      "is_active": true,
+      "created_at": "2025-12-29T07:26:15.793000",
+      "updated_at": "2025-12-29T07:26:15.793000"
+    }
+  ],
+  "drawer_cards": [
+    {
+      "id": "3c79f55b-edc1-4857-9b39-e7f4c85b84dd",
+      "title_ru": "FOMO Dashboard",
+      "title_en": "FOMO Dashboard",
+      "link": "https://dashboard.fomo.io",
+      "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      "order": 1,
+      "created_at": "2025-12-29T07:26:16.164964+00:00",
+      "updated_at": "2025-12-29T07:26:16.164967+00:00"
+    },
+    {
+      "id": "ebe73fd0-c6db-4434-991c-b78c0b6a5e6a",
+      "title_ru": "OTC Market",
+      "title_en": "OTC Market",
+      "link": "https://otc.fomo.io",
+      "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop",
+      "order": 2,
+      "created_at": "2025-12-29T07:26:16.229061+00:00",
+      "updated_at": "2025-12-29T07:26:16.229064+00:00"
+    },
+    {
+      "id": "8b50fe8f-e93e-41a7-84b9-927a9aac066a",
+      "title_ru": "P2P Exchange",
+      "title_en": "P2P Exchange",
+      "link": "https://p2p.fomo.io",
+      "image_url": "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=600&h=400&fit=crop",
+      "order": 3,
+      "created_at": "2025-12-29T07:26:16.273124+00:00",
+      "updated_at": "2025-12-29T07:26:16.273128+00:00"
+    },
+    {
+      "id": "dae55242-7ff3-4158-9f7f-a137fedf8adb",
+      "title_ru": "NFT Box 666",
+      "title_en": "NFT Box 666",
+      "link": "https://nft.fomo.io",
+      "image_url": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+      "order": 4,
+      "created_at": "2025-12-29T07:26:16.316070+00:00",
+      "updated_at": "2025-12-29T07:26:16.316073+00:00"
+    }
+  ],
+  "navigation_items": [
+    {
+      "id": "ec5b35e3-df04-42ae-b264-c6e45cc82b84",
+      "key": "about",
+      "label_ru": "О нас",
+      "label_en": "About",
+      "href": "#about",
+      "order": 1,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666123+00:00",
+      "updated_at": "2025-12-29T07:25:55.666132+00:00"
+    },
+    {
+      "id": "1ba1c1cd-7e06-4a03-98fc-952ca0bc2f06",
+      "key": "platform",
+      "label_ru": "Платформа",
+      "label_en": "Platform",
+      "href": "#platform",
+      "order": 2,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666142+00:00",
+      "updated_at": "2025-12-29T07:25:55.666143+00:00"
+    },
+    {
+      "id": "cb19d13e-1500-450d-9414-1f4a9884482e",
+      "key": "projects",
+      "label_ru": "Проекты",
+      "label_en": "Projects",
+      "href": "#projects",
+      "order": 3,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666149+00:00",
+      "updated_at": "2025-12-29T07:25:55.666150+00:00"
+    },
+    {
+      "id": "bc38868b-5d32-4dae-8b2a-45404794c90f",
+      "key": "roadmap",
+      "label_ru": "Дорожная карта",
+      "label_en": "Roadmap",
+      "href": "#roadmap",
+      "order": 4,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666154+00:00",
+      "updated_at": "2025-12-29T07:25:55.666156+00:00"
+    },
+    {
+      "id": "e92624ed-aae5-4bbf-aef7-47b7db9002e0",
+      "key": "team",
+      "label_ru": "Команда",
+      "label_en": "Team",
+      "href": "#team",
+      "order": 5,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666160+00:00",
+      "updated_at": "2025-12-29T07:25:55.666161+00:00"
+    },
+    {
+      "id": "ccd676a2-2b5c-48ea-a221-24ab2de4e5e6",
+      "key": "partners",
+      "label_ru": "Партнёры",
+      "label_en": "Partners",
+      "href": "#partners",
+      "order": 6,
+      "is_active": true,
+      "created_at": "2025-12-29T07:25:55.666166+00:00",
+      "updated_at": "2025-12-29T07:25:55.666167+00:00"
+    }
+  ]
+}
