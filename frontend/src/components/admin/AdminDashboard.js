@@ -78,6 +78,7 @@ const AdminDashboard = () => {
     { id: 'community', name: 'Community', icon: '💬' },
     { id: 'footer', name: 'Footer', icon: '📄' },
     { id: 'faq', name: 'FAQ', icon: '❓' },
+    { id: 'cookie-consent', name: 'Cookie Consent', icon: '🍪' },
     { id: 'analytics', name: 'Analytics', icon: '📈' }
   ];
 
