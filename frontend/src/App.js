@@ -9164,6 +9164,7 @@ function App() {
   return (
     <LanguageProvider>
       <CustomCursor />
+      <CookieConsent />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainSite />} />
