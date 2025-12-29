@@ -1,39 +1,48 @@
 backend:
   - task: "Cookie Consent API - GET endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Initial setup - needs testing"
+      - working: true
+        agent: "testing"
+        comment: "API working correctly, returns all required fields. Minor: Database contains Russian fields (title_ru, description_ru) that should be removed per user feedback, but core functionality works."
 
   - task: "Admin Login API"
     implemented: true
-    working: "NA"
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Initial setup - needs testing"
+      - working: true
+        agent: "testing"
+        comment: "Admin login working correctly with password 'admin123'. Returns valid token. Properly rejects invalid passwords with 401 status."
 
   - task: "Cookie Consent Admin Update API"
     implemented: true
-    working: "NA"
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Initial setup - needs testing"
+      - working: true
+        agent: "testing"
+        comment: "Admin update API working correctly. Requires valid auth token, properly rejects unauthorized requests with 401. Successfully updates cookie consent settings."
 
 frontend:
   - task: "Cookie Consent Banner Display"
