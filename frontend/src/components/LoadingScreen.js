@@ -17,13 +17,11 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
   useEffect(() => {
     const startTime = Date.now();
     
-    // Simulate progress
     const interval = setInterval(() => {
       setProgress(prev => {
         const elapsed = Date.now() - startTime;
         const targetProgress = Math.min(95, (elapsed / minDuration) * 100);
         
-        // Update loading text based on progress
         const textIndex = Math.floor(prev / 25);
         if (textIndex < loadingTexts.length) {
           setLoadingText(loadingTexts[textIndex]);
@@ -38,7 +36,6 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
       });
     }, 100);
 
-    // Complete loading after minDuration
     const timeout = setTimeout(() => {
       setProgress(100);
       setLoadingText('Welcome to FOMO');
@@ -64,14 +61,13 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="loading-screen"
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%)',
+            background: 'linear-gradient(180deg, #ffffff 0%, #f0fdf4 50%, #ecfdf5 100%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -80,88 +76,78 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
             overflow: 'hidden'
           }}
         >
-          {/* Animated Stars Background */}
-          <div className="stars-container" style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-            {[...Array(50)].map((_, i) => (
+          {/* Subtle floating particles - light green */}
+          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 100 }}
                 animate={{ 
-                  opacity: [0, 1, 0],
-                  scale: [0.5, 1, 0.5]
+                  opacity: [0.3, 0.6, 0.3],
+                  y: [-20, -100, -20]
                 }}
                 transition={{
-                  duration: Math.random() * 3 + 2,
+                  duration: Math.random() * 4 + 3,
                   repeat: Infinity,
                   delay: Math.random() * 2
                 }}
                 style={{
                   position: 'absolute',
                   left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: `${Math.random() * 3 + 1}px`,
-                  height: `${Math.random() * 3 + 1}px`,
-                  background: 'white',
+                  top: `${60 + Math.random() * 40}%`,
+                  width: `${Math.random() * 8 + 4}px`,
+                  height: `${Math.random() * 8 + 4}px`,
+                  background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
                   borderRadius: '50%',
-                  boxShadow: '0 0 10px rgba(255,255,255,0.5)'
+                  filter: 'blur(1px)'
                 }}
               />
             ))}
           </div>
 
-          {/* Orbital Ring */}
+          {/* Decorative circles */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            style={{
+              position: 'absolute',
+              width: '500px',
+              height: '500px',
+              border: '1px solid rgba(16, 185, 129, 0.15)',
+              borderRadius: '50%'
+            }}
+          />
+          
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            style={{
+              position: 'absolute',
+              width: '400px',
+              height: '400px',
+              border: '1px dashed rgba(16, 185, 129, 0.2)',
+              borderRadius: '50%'
+            }}
+          />
+
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             style={{
               position: 'absolute',
-              width: '400px',
-              height: '400px',
-              border: '1px dashed rgba(16, 185, 129, 0.3)',
-              borderRadius: '50%'
-            }}
-          />
-
-          {/* Second Orbital Ring */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-            style={{
-              position: 'absolute',
               width: '300px',
               height: '300px',
-              border: '1px dashed rgba(59, 130, 246, 0.3)',
+              border: '1px solid rgba(16, 185, 129, 0.1)',
               borderRadius: '50%'
             }}
           />
 
-          {/* Floating Rocket */}
+          {/* Floating rocket - top right */}
           <motion.div
             animate={{ 
               y: [-10, 10, -10],
-              rotate: [0, 5, -5, 0]
-            }}
-            transition={{ 
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-            style={{
-              position: 'absolute',
-              top: '20%',
-              right: '20%',
-              fontSize: '2rem',
-              filter: 'drop-shadow(0 0 10px rgba(255,165,0,0.5))'
-            }}
-          >
-            🚀
-          </motion.div>
-
-          {/* Floating Planet */}
-          <motion.div
-            animate={{ 
-              y: [5, -5, 5],
-              rotate: [0, -3, 3, 0]
+              x: [-5, 5, -5],
+              rotate: [-10, 10, -10]
             }}
             transition={{ 
               duration: 4,
@@ -170,18 +156,61 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
             }}
             style={{
               position: 'absolute',
-              bottom: '25%',
-              left: '15%',
-              fontSize: '1.5rem',
-              filter: 'drop-shadow(0 0 10px rgba(138,43,226,0.5))'
+              top: '15%',
+              right: '20%',
+              fontSize: '2.5rem',
+              filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
             }}
           >
-            🪐
+            🚀
           </motion.div>
 
-          {/* Main Content Container */}
+          {/* Floating coin - left */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ 
+              y: [5, -5, 5],
+              rotate: [0, 360]
+            }}
+            transition={{ 
+              y: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+              rotate: { duration: 8, repeat: Infinity, ease: 'linear' }
+            }}
+            style={{
+              position: 'absolute',
+              bottom: '30%',
+              left: '15%',
+              fontSize: '2rem',
+              filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
+            }}
+          >
+            💎
+          </motion.div>
+
+          {/* Floating chart - bottom right */}
+          <motion.div
+            animate={{ 
+              y: [-8, 8, -8],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              duration: 3.5,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+            style={{
+              position: 'absolute',
+              bottom: '25%',
+              right: '15%',
+              fontSize: '1.8rem',
+              filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
+            }}
+          >
+            📈
+          </motion.div>
+
+          {/* Main Content */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
             style={{
@@ -191,29 +220,28 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
               zIndex: 10
             }}
           >
-            {/* Animated Logo/Astronaut */}
+            {/* Logo with glow */}
             <motion.div
               animate={{ 
-                y: [-5, 5, -5],
-                rotate: [-2, 2, -2]
+                y: [-3, 3, -3],
               }}
               transition={{ 
-                duration: 3,
+                duration: 2.5,
                 repeat: Infinity,
                 ease: 'easeInOut'
               }}
               style={{
-                width: '120px',
-                height: '120px',
-                marginBottom: '24px',
+                width: '100px',
+                height: '100px',
+                marginBottom: '20px',
                 position: 'relative'
               }}
             >
-              {/* Glow Effect */}
+              {/* Glow ring */}
               <motion.div
                 animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.8, 0.5]
+                  scale: [1, 1.15, 1],
+                  opacity: [0.4, 0.7, 0.4]
                 }}
                 transition={{ 
                   duration: 2,
@@ -222,13 +250,12 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
                 }}
                 style={{
                   position: 'absolute',
-                  inset: '-20px',
-                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%)',
+                  inset: '-15px',
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%)',
                   borderRadius: '50%'
                 }}
               />
               
-              {/* Logo */}
               <img 
                 src="/logo.svg" 
                 alt="FOMO" 
@@ -236,25 +263,25 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'contain',
-                  filter: 'drop-shadow(0 0 20px rgba(16, 185, 129, 0.5))'
+                  filter: 'drop-shadow(0 4px 12px rgba(16, 185, 129, 0.3))'
                 }}
               />
             </motion.div>
 
             {/* Brand Name */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.2 }}
               style={{
-                fontSize: '2.5rem',
+                fontSize: '2.2rem',
                 fontWeight: 'bold',
-                background: 'linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6)',
+                background: 'linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                marginBottom: '8px',
-                letterSpacing: '0.1em'
+                marginBottom: '6px',
+                letterSpacing: '0.15em'
               }}
             >
               FOMO
@@ -263,110 +290,142 @@ const LoadingScreen = ({ onLoadingComplete, minDuration = 2000 }) => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.4 }}
               style={{
-                color: 'rgba(255,255,255,0.6)',
-                fontSize: '0.9rem',
-                marginBottom: '40px',
-                letterSpacing: '0.2em'
+                color: '#6b7280',
+                fontSize: '0.75rem',
+                marginBottom: '35px',
+                letterSpacing: '0.25em',
+                fontWeight: '500'
               }}
             >
               CRYPTO ANALYTICS PLATFORM
             </motion.p>
 
-            {/* Progress Bar */}
+            {/* Progress Container */}
             <div style={{
-              width: '280px',
-              height: '4px',
-              background: 'rgba(255,255,255,0.1)',
-              borderRadius: '2px',
-              overflow: 'hidden',
-              marginBottom: '16px'
+              width: '260px',
+              padding: '16px 20px',
+              background: 'white',
+              borderRadius: '16px',
+              boxShadow: '0 4px 20px rgba(16, 185, 129, 0.1), 0 1px 3px rgba(0,0,0,0.05)',
+              border: '1px solid rgba(16, 185, 129, 0.1)'
             }}>
-              <motion.div
-                initial={{ width: '0%' }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #10b981, #3b82f6)',
-                  borderRadius: '2px',
-                  boxShadow: '0 0 10px rgba(16, 185, 129, 0.5)'
-                }}
-              />
-            </div>
-
-            {/* Progress Text */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '280px',
-              alignItems: 'center'
-            }}>
-              <motion.span
-                key={loadingText}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                style={{
-                  color: 'rgba(255,255,255,0.5)',
-                  fontSize: '0.8rem'
-                }}
-              >
-                {loadingText}
-              </motion.span>
-              <span style={{
-                color: '#10b981',
-                fontWeight: 'bold',
-                fontSize: '0.9rem'
+              {/* Progress Bar */}
+              <div style={{
+                width: '100%',
+                height: '6px',
+                background: '#f3f4f6',
+                borderRadius: '3px',
+                overflow: 'hidden',
+                marginBottom: '12px'
               }}>
-                {Math.round(progress)}%
-              </span>
+                <motion.div
+                  initial={{ width: '0%' }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #10b981, #34d399)',
+                    borderRadius: '3px',
+                    boxShadow: '0 0 8px rgba(16, 185, 129, 0.4)'
+                  }}
+                />
+              </div>
+
+              {/* Progress Text */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <motion.span
+                  key={loadingText}
+                  initial={{ opacity: 0, x: -5 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  style={{
+                    color: '#9ca3af',
+                    fontSize: '0.75rem',
+                    fontWeight: '500'
+                  }}
+                >
+                  {loadingText}
+                </motion.span>
+                <span style={{
+                  color: '#10b981',
+                  fontWeight: 'bold',
+                  fontSize: '0.85rem'
+                }}>
+                  {Math.round(progress)}%
+                </span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Bottom Decorative Elements */}
+          {/* Bottom dots indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 0.8 }}
             style={{
               position: 'absolute',
-              bottom: '30px',
+              bottom: '40px',
               display: 'flex',
               gap: '8px',
               alignItems: 'center'
             }}
           >
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.2, repeat: Infinity }}
               style={{
-                width: '6px',
-                height: '6px',
+                width: '8px',
+                height: '8px',
                 background: '#10b981',
                 borderRadius: '50%'
               }}
             />
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.2, repeat: Infinity, delay: 0.2 }}
               style={{
-                width: '6px',
-                height: '6px',
-                background: '#3b82f6',
+                width: '8px',
+                height: '8px',
+                background: '#34d399',
                 borderRadius: '50%'
               }}
             />
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.2, repeat: Infinity, delay: 0.4 }}
               style={{
-                width: '6px',
-                height: '6px',
-                background: '#8b5cf6',
+                width: '8px',
+                height: '8px',
+                background: '#6ee7b7',
                 borderRadius: '50%'
               }}
             />
+          </motion.div>
+
+          {/* Secure badge */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            style={{
+              position: 'absolute',
+              bottom: '15px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              color: '#9ca3af',
+              fontSize: '0.7rem'
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>Secured by FOMO Platform</span>
           </motion.div>
         </motion.div>
       )}
