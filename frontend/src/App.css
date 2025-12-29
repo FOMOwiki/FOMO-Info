@@ -1,6 +1,7 @@
 /* Import mobile responsive styles */
 @import './styles/mobile.css';
 @import './styles/mobile-fixes.css';
+@import './styles/mobile-medium-fixes.css';
 
 
 /* ==================== ANIMATED CURSOR WITH TRAIL ==================== */
