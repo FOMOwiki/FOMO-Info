@@ -1,0 +1,632 @@
+/* ============================================
+   MOBILE UI/UX OPTIMIZATION - COMPACT DESIGN
+   Максимально компактный и эффективный UI
+   ============================================ */
+
+/* ==========================================
+   SECTION 1: GLOBAL SPACING OPTIMIZATION
+   ========================================== */
+
+/* Drastically reduce all section padding on mobile */
+@media (max-width: 767px) {
+  /* Main sections */
+  section,
+  section[class*="py-"] {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Extra compact for very small screens */
+  @media (max-width: 479px) {
+    section,
+    section[class*="py-"] {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+  
+  /* Container padding */
+  .container,
+  .max-w-7xl,
+  [class*="max-w-"] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Reduce margin between major blocks */
+  section > div,
+  section > .container {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ==========================================
+   SECTION 2: HEADER/NAV OPTIMIZATION
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact header */
+  nav,
+  header {
+    padding: 0.75rem 1rem !important;
+    min-height: 60px !important;
+  }
+  
+  /* Logo smaller */
+  nav img[alt*="logo"],
+  .logo {
+    max-height: 32px !important;
+  }
+  
+  /* Compact crypto stats */
+  .chart-stats {
+    gap: 6px !important;
+    padding: 8px 0 !important;
+  }
+  
+  .stat-box {
+    padding: 6px 8px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 3: HERO SECTION OPTIMIZATION
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Remove min-h-screen */
+  section[data-testid="hero-section"],
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 4rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  @media (max-width: 479px) {
+    section[data-testid="hero-section"] {
+      padding-top: 3rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+  
+  /* Compact hero content */
+  .hero-section .grid {
+    gap: 2rem !important;
+  }
+  
+  /* Smaller badges */
+  .hero-section .badge,
+  [class*="badge"] {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Reduce title margin */
+  section[data-testid="hero-section"] h1 {
+    margin-bottom: 1rem !important;
+  }
+  
+  section[data-testid="hero-section"] p {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Compact button group */
+  section[data-testid="hero-section"] .flex.gap-4 {
+    gap: 0.75rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Smaller hero blobs */
+  @media (max-width: 479px) {
+    .blob-1 {
+      width: 120px !important;
+      height: 120px !important;
+    }
+    
+    .blob-2 {
+      width: 150px !important;
+      height: 150px !important;
+    }
+    
+    .blob-3 {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
+
+/* ==========================================
+   SECTION 4: EVOLUTION CARDS COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Smaller evolution cards */
+  .evolution-levels-grid .evolution-card-wrapper,
+  .evolution-badges-grid .evolution-card-wrapper {
+    min-width: 260px !important;
+    max-width: 260px !important;
+    height: 140px !important;
+  }
+  
+  @media (max-width: 479px) {
+    .evolution-levels-grid .evolution-card-wrapper,
+    .evolution-badges-grid .evolution-card-wrapper {
+      min-width: 240px !important;
+      max-width: 240px !important;
+      height: 130px !important;
+    }
+  }
+  
+  /* Compact card content */
+  .evolution-card,
+  .evolution-card-wrapper > div {
+    padding: 8px !important;
+  }
+  
+  /* Reduce gap */
+  .evolution-levels-grid,
+  .evolution-badges-grid {
+    gap: 10px !important;
+    padding: 10px 4px 20px !important;
+  }
+  
+  /* Smaller text in evolution cards */
+  .evolution-card h3,
+  .evolution-card .text-lg {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .evolution-card p,
+  .evolution-card .text-sm {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ==========================================
+   SECTION 5: UTILITIES CARDS COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact utility cards */
+  .utility-card {
+    padding: 12px !important;
+  }
+  
+  .utility-card .p-6 {
+    padding: 12px !important;
+  }
+  
+  /* Smaller utility icon */
+  .utility-card .p-3 {
+    padding: 8px !important;
+  }
+  
+  /* Compact stats grid */
+  .utility-card .grid-cols-3 {
+    gap: 8px !important;
+    padding: 8px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Reduce gap in utilities slider */
+  .utilities-slider-track {
+    gap: 12px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 6: TEAM CARDS COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact team cards */
+  .team-card {
+    padding: 12px !important;
+  }
+  
+  /* Smaller team image */
+  .team-card-image {
+    height: 120px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Compact team info */
+  .team-card h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .team-card p {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Reduce gap */
+  .team-slider-track {
+    gap: 12px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 7: FAQ COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact FAQ section */
+  section[data-testid="faq-section"] {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Compact FAQ items */
+  .faq-item,
+  .accordion-item,
+  [role="button"][aria-expanded] {
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Smaller FAQ text */
+  .faq-item h3,
+  .accordion-trigger {
+    font-size: 0.9rem !important;
+  }
+  
+  .faq-item p,
+  .accordion-content {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    padding-top: 8px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 8: PARTNERS/ROADMAP COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact partner cards */
+  .partner-card,
+  .roadmap-card {
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Compact tabs */
+  [role="tab"],
+  .tab-button {
+    padding: 10px 16px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 9: FOOTER COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Much more compact footer */
+  .footer-clearstreet,
+  footer {
+    padding: 2rem 0 1.5rem !important;
+  }
+  
+  /* Reduce footer grid gap */
+  .footer-grid {
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Compact footer columns */
+  .footer-column {
+    margin-bottom: 0 !important;
+  }
+  
+  .footer-column-title {
+    margin-bottom: 0.75rem !important;
+    font-size: 0.65rem !important;
+  }
+  
+  /* Compact footer links */
+  .footer-links li {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .footer-link {
+    font-size: 0.8rem !important;
+    padding: 0.25rem 0 !important;
+  }
+  
+  /* Compact footer social */
+  .footer-social {
+    gap: 12px !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Footer bottom */
+  .footer-bottom,
+  .footer-copyright {
+    padding: 1rem 0 !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ==========================================
+   SECTION 10: TYPOGRAPHY OPTIMIZATION
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* More compact headings */
+  h1,
+  .text-5xl,
+  .text-6xl {
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  h2,
+  .text-4xl {
+    font-size: clamp(1.5rem, 4vw, 2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  h3,
+  .text-3xl,
+  .text-2xl {
+    font-size: clamp(1.125rem, 3vw, 1.5rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Compact paragraphs */
+  p {
+    margin-bottom: 0.75rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Smaller subtitles */
+  .subtitle,
+  .text-xl {
+    font-size: clamp(0.95rem, 2.5vw, 1.125rem) !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* ==========================================
+   SECTION 11: CARDS & COMPONENTS COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* All cards more compact */
+  .card,
+  [class*="card"]:not([class*="slider"]) {
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Compact badges */
+  .badge,
+  [class*="badge"] {
+    padding: 0.25rem 0.625rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  /* Compact buttons */
+  button,
+  .btn,
+  a[role="button"] {
+    padding: 10px 16px !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Compact inputs */
+  input,
+  textarea,
+  select {
+    padding: 10px 12px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 12: GRID/FLEX OPTIMIZATION
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Reduce all gaps */
+  .grid,
+  .flex {
+    gap: 0.75rem !important;
+  }
+  
+  /* Even smaller gaps for dense layouts */
+  .grid[class*="grid-cols-2"],
+  .grid[class*="grid-cols-3"] {
+    gap: 0.5rem !important;
+  }
+  
+  /* Compact list items */
+  ul,
+  ol {
+    padding-left: 1.25rem !important;
+  }
+  
+  li {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* ==========================================
+   SECTION 13: IMAGES & MEDIA COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Responsive images with less spacing */
+  img {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Compact image containers */
+  figure,
+  .image-wrapper {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Smaller icon containers */
+  [class*="icon"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+/* ==========================================
+   SECTION 14: MODAL/DIALOG COMPACT
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Compact modals */
+  [role="dialog"],
+  .modal {
+    padding: 1rem !important;
+    margin: 1rem !important;
+  }
+  
+  .modal-header {
+    padding: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .modal-body {
+    padding: 1rem !important;
+  }
+  
+  .modal-footer {
+    padding: 1rem !important;
+    margin-top: 0.75rem !important;
+  }
+}
+
+/* ==========================================
+   SECTION 15: REMOVE EXCESS WHITESPACE
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Remove top/bottom margins that create gaps */
+  * {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
+  
+  /* Target specific spacing issues */
+  .mb-4,
+  .mb-6,
+  .mb-8 {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .mt-4,
+  .mt-6,
+  .mt-8 {
+    margin-top: 0.75rem !important;
+  }
+  
+  .mb-12,
+  .mb-16 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mt-12,
+  .mt-16 {
+    margin-top: 1.5rem !important;
+  }
+}
+
+/* ==========================================
+   SECTION 16: PREVENT TEXT OVERLAP
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Prevent overlapping text */
+  * {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  /* Ensure proper stacking */
+  section,
+  div {
+    position: relative !important;
+  }
+  
+  /* Fix z-index issues */
+  .fixed,
+  .absolute {
+    z-index: auto !important;
+  }
+  
+  nav,
+  header {
+    z-index: 100 !important;
+  }
+  
+  .mobile-menu,
+  [data-testid="mobile-menu"] {
+    z-index: 101 !important;
+  }
+}
+
+/* ==========================================
+   SECTION 17: PERFORMANCE OPTIMIZATION
+   ========================================== */
+
+@media (max-width: 767px) {
+  /* Simplify animations on mobile */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Remove expensive filters on mobile */
+  .blur,
+  [class*="blur"] {
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Optimize shadows */
+  .shadow,
+  [class*="shadow"] {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* ==========================================
+   SECTION 18: FINAL POLISH
+   ========================================== */
+
+@media (max-width: 479px) {
+  /* Extra compact for very small screens */
+  body {
+    font-size: 14px !important;
+  }
+  
+  /* Minimum comfortable spacing */
+  section + section {
+    margin-top: 0 !important;
+  }
+  
+  /* Compact section headers */
+  section > div:first-child {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Last element no margin */
+  section > *:last-child {
+    margin-bottom: 0 !important;
+  }
+}
